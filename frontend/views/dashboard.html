@@ -1,0 +1,3264 @@
+<div class="mmct-dashboard">
+
+    <style>
+
+        /* ==========================================================
+           DASHBOARD — COMPLETE SELF CONTAINED STYLE
+           ========================================================== */
+
+        .mmct-dashboard {
+            min-height: 100vh;
+            background: #f4f7fb;
+            color: #1e293b;
+            font-family:
+                Inter,
+                "Segoe UI",
+                Roboto,
+                Arial,
+                sans-serif;
+        }
+
+
+        /* ==========================================================
+           SIDEBAR
+           ========================================================== */
+
+        .mmct-dashboard .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            bottom: 0;
+
+            width: 258px;
+
+            display: flex;
+            flex-direction: column;
+
+            background: #ffffff;
+            border-right: 1px solid #e5eaf1;
+
+            z-index: 1000;
+
+            overflow-y: auto;
+        }
+
+
+        .mmct-dashboard .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            padding: 20px 19px;
+
+            border-bottom: 1px solid #eef2f6;
+        }
+
+
+        .mmct-dashboard .brand-logo {
+            width: 42px;
+            height: 42px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 12px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #0d6efd,
+                    #2563eb
+                );
+
+            color: #ffffff;
+
+            font-size: 18px;
+
+            box-shadow:
+                0 7px 18px rgba(13,110,253,.18);
+        }
+
+
+        .mmct-dashboard .brand-title {
+            color: #172033;
+            font-size: 14px;
+            font-weight: 800;
+            line-height: 1.1;
+        }
+
+
+        .mmct-dashboard .brand-subtitle {
+            margin-top: 3px;
+            color: #94a3b8;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: .4px;
+        }
+
+
+        /* ==========================================================
+           USER PROFILE SIDEBAR
+           ========================================================== */
+
+        .mmct-dashboard .sidebar-profile {
+            margin: 15px 14px;
+
+            padding: 11px;
+
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            border: 1px solid #e8edf3;
+            border-radius: 12px;
+
+            background: #f8fafc;
+        }
+
+
+        .mmct-dashboard .profile-avatar {
+            width: 37px;
+            height: 37px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            flex: 0 0 37px;
+
+            border-radius: 10px;
+
+            background: #eaf4ff;
+            color: #0d6efd;
+
+            font-size: 14px;
+        }
+
+
+        .mmct-dashboard .profile-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+
+        .mmct-dashboard .profile-name {
+            overflow: hidden;
+
+            color: #334155;
+
+            font-size: 10px;
+            font-weight: 750;
+
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+
+        .mmct-dashboard .profile-role {
+            margin-top: 2px;
+
+            color: #94a3b8;
+
+            font-size: 8px;
+
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+
+        .mmct-dashboard .profile-online {
+            width: 7px;
+            height: 7px;
+
+            border-radius: 50%;
+
+            background: #198754;
+
+            box-shadow:
+                0 0 0 4px rgba(25,135,84,.08);
+        }
+
+
+        /* ==========================================================
+           SIDEBAR NAV
+           ========================================================== */
+
+        .mmct-dashboard .nav-label {
+            padding: 13px 20px 7px;
+
+            color: #a0acbb;
+
+            font-size: 8px;
+            font-weight: 800;
+
+            letter-spacing: 1.1px;
+        }
+
+
+        .mmct-dashboard .nav-list {
+            padding: 0 10px;
+
+            display: flex;
+            flex-direction: column;
+
+            gap: 3px;
+        }
+
+
+        .mmct-dashboard .nav-item {
+            min-height: 43px;
+
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            padding: 9px 11px;
+
+            border-radius: 9px;
+
+            color: #566477;
+
+            font-size: 11px;
+            font-weight: 650;
+
+            transition:
+                background .2s ease,
+                color .2s ease,
+                transform .2s ease;
+
+            text-decoration: none;
+        }
+
+
+        .mmct-dashboard .nav-item:hover {
+            color: #0d6efd;
+            background: #f0f6ff;
+            transform: translateX(2px);
+        }
+
+
+        .mmct-dashboard .nav-item.active {
+            color: #0d6efd;
+            background: #eaf4ff;
+
+            box-shadow:
+                inset 3px 0 0 #0d6efd;
+        }
+
+
+        .mmct-dashboard .nav-icon {
+            width: 22px;
+
+            display: flex;
+            justify-content: center;
+
+            font-size: 14px;
+        }
+
+
+        .mmct-dashboard .nav-text {
+            flex: 1;
+        }
+
+
+        .mmct-dashboard .nav-ready {
+            padding: 3px 6px;
+
+            border-radius: 999px;
+
+            background: #eaf8f0;
+            color: #198754;
+
+            font-size: 7px;
+            font-weight: 800;
+        }
+
+
+        /* ==========================================================
+           SIDEBAR FOOTER
+           ========================================================== */
+
+        .mmct-dashboard .sidebar-bottom {
+            margin-top: auto;
+
+            padding: 14px;
+        }
+
+
+        .mmct-dashboard .secure-box {
+            padding: 11px;
+
+            border: 1px solid #dce8f7;
+            border-radius: 11px;
+
+            background: #f7fbff;
+        }
+
+
+        .mmct-dashboard .secure-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+
+        .mmct-dashboard .secure-icon {
+            width: 30px;
+            height: 30px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 8px;
+
+            background: #eaf4ff;
+            color: #0d6efd;
+
+            font-size: 12px;
+        }
+
+
+        .mmct-dashboard .secure-title {
+            color: #334155;
+
+            font-size: 9px;
+            font-weight: 750;
+        }
+
+
+        .mmct-dashboard .secure-text {
+            margin-top: 2px;
+
+            color: #94a3b8;
+
+            font-size: 8px;
+        }
+
+
+        .mmct-dashboard .secure-status {
+            margin-top: 9px;
+
+            display: flex;
+            align-items: center;
+            gap: 6px;
+
+            color: #64748b;
+
+            font-size: 8px;
+        }
+
+
+        .mmct-dashboard .green-dot {
+            width: 7px;
+            height: 7px;
+
+            border-radius: 50%;
+
+            background: #198754;
+        }
+
+
+        .mmct-dashboard .logout-btn {
+            width: 100%;
+
+            margin-top: 8px;
+
+            height: 37px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+
+            border: 1px solid #e1e7ef;
+            border-radius: 9px;
+
+            background: #ffffff;
+
+            color: #64748b;
+
+            font-size: 10px;
+            font-weight: 650;
+
+            cursor: pointer;
+        }
+
+
+        .mmct-dashboard .logout-btn:hover {
+            background: #fff7f7;
+            color: #dc3545;
+            border-color: #fecaca;
+        }
+
+
+        /* ==========================================================
+           MAIN
+           ========================================================== */
+
+        .mmct-dashboard .main {
+            margin-left: 258px;
+
+            min-height: 100vh;
+        }
+
+
+        /* ==========================================================
+           TOPBAR
+           ========================================================== */
+
+        .mmct-dashboard .topbar {
+            height: 70px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 26px;
+
+            background: rgba(255,255,255,.96);
+
+            border-bottom: 1px solid #e5eaf1;
+
+            position: sticky;
+            top: 0;
+
+            z-index: 900;
+        }
+
+
+        .mmct-dashboard .topbar-label {
+            color: #9aa6b6;
+
+            font-size: 8px;
+            font-weight: 800;
+
+            letter-spacing: 1.1px;
+        }
+
+
+        .mmct-dashboard .topbar-title {
+            margin-top: 3px;
+
+            color: #1e293b;
+
+            font-size: 15px;
+            font-weight: 750;
+        }
+
+
+        .mmct-dashboard .topbar-right {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+        }
+
+
+        .mmct-dashboard .search-box {
+            width: 220px;
+            height: 37px;
+
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            padding: 0 10px;
+
+            border: 1px solid #e1e7ef;
+            border-radius: 9px;
+
+            background: #f8fafc;
+
+            color: #9aa6b6;
+
+            font-size: 9px;
+
+            text-decoration: none;
+        }
+
+
+        .mmct-dashboard .search-box:hover {
+            border-color: #bdd5f5;
+            background: #ffffff;
+            color: #0d6efd;
+        }
+
+
+        .mmct-dashboard .search-key {
+            margin-left: auto;
+
+            padding: 2px 5px;
+
+            border: 1px solid #dce3ec;
+            border-radius: 4px;
+
+            background: #ffffff;
+
+            color: #94a3b8;
+
+            font-size: 7px;
+        }
+
+
+        .mmct-dashboard .icon-button {
+            position: relative;
+
+            width: 37px;
+            height: 37px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border: 1px solid #e1e7ef;
+            border-radius: 9px;
+
+            background: #ffffff;
+            color: #64748b;
+
+            cursor: pointer;
+        }
+
+
+        .mmct-dashboard .icon-button:hover {
+            color: #0d6efd;
+            background: #f7fbff;
+        }
+
+
+        .mmct-dashboard .notification {
+            position: absolute;
+
+            top: 7px;
+            right: 7px;
+
+            width: 5px;
+            height: 5px;
+
+            border-radius: 50%;
+
+            background: #dc3545;
+        }
+
+
+        .mmct-dashboard .topbar-line {
+            width: 1px;
+            height: 27px;
+
+            background: #e6ebf2;
+        }
+
+
+        .mmct-dashboard .top-user {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+
+        .mmct-dashboard .top-avatar {
+            width: 35px;
+            height: 35px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 9px;
+
+            background: #eaf4ff;
+            color: #0d6efd;
+
+            font-size: 13px;
+        }
+
+
+        .mmct-dashboard .top-name {
+            color: #334155;
+
+            font-size: 9px;
+            font-weight: 750;
+        }
+
+
+        .mmct-dashboard .top-role {
+            margin-top: 2px;
+
+            color: #94a3b8;
+
+            font-size: 8px;
+        }
+
+
+        /* ==========================================================
+           PAGE
+           ========================================================== */
+
+        .mmct-dashboard .page {
+            padding: 25px 27px 60px;
+
+            max-width: 1600px;
+
+            margin: 0 auto;
+        }
+
+
+        /* ==========================================================
+           HERO
+           ========================================================== */
+
+        .mmct-dashboard .hero {
+            position: relative;
+
+            min-height: 210px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 25px;
+
+            padding: 30px;
+
+            overflow: hidden;
+
+            border: 1px solid #d7e7f9;
+            border-radius: 18px;
+
+            background:
+                linear-gradient(
+                    110deg,
+                    #ffffff 0%,
+                    #f4f9ff 58%,
+                    #eaf4ff 100%
+                );
+
+            box-shadow:
+                0 7px 28px rgba(15,23,42,.045);
+        }
+
+
+        .mmct-dashboard .hero::after {
+            content: "";
+
+            position: absolute;
+
+            right: -100px;
+            top: -130px;
+
+            width: 340px;
+            height: 340px;
+
+            border-radius: 50%;
+
+            border: 55px solid rgba(13,110,253,.035);
+        }
+
+
+        .mmct-dashboard .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+
+        .mmct-dashboard .hero-label {
+            color: #0d6efd;
+
+            font-size: 8px;
+            font-weight: 850;
+
+            letter-spacing: 1.2px;
+        }
+
+
+        .mmct-dashboard .hero h1 {
+            margin: 7px 0 0;
+
+            color: #172033;
+
+            font-size: 28px;
+            font-weight: 800;
+
+            line-height: 1.2;
+        }
+
+
+        .mmct-dashboard .hero h1 span {
+            color: #0d6efd;
+        }
+
+
+        .mmct-dashboard .hero-description {
+            max-width: 730px;
+
+            margin: 9px 0 0;
+
+            color: #64748b;
+
+            font-size: 11px;
+
+            line-height: 1.7;
+        }
+
+
+        .mmct-dashboard .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+
+            margin-top: 15px;
+        }
+
+
+        .mmct-dashboard .hero-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+
+            color: #64748b;
+
+            font-size: 8px;
+            font-weight: 650;
+        }
+
+
+        .mmct-dashboard .hero-meta i {
+            color: #0d6efd;
+        }
+
+
+        .mmct-dashboard .hero-actions {
+            position: relative;
+            z-index: 2;
+
+            display: flex;
+            flex-direction: column;
+
+            gap: 8px;
+
+            min-width: 160px;
+        }
+
+
+        .mmct-dashboard .hero-actions .btn {
+            min-height: 40px;
+
+            font-size: 10px;
+            font-weight: 650;
+        }
+
+
+        /* ==========================================================
+           SECTION
+           ========================================================== */
+
+        .mmct-dashboard .section {
+            margin-top: 26px;
+        }
+
+
+        .mmct-dashboard .section-header {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+
+            margin-bottom: 13px;
+        }
+
+
+        .mmct-dashboard .section-label {
+            color: #9aa6b6;
+
+            font-size: 8px;
+            font-weight: 800;
+
+            letter-spacing: 1px;
+        }
+
+
+        .mmct-dashboard .section-title {
+            margin-top: 3px;
+
+            color: #1e293b;
+
+            font-size: 17px;
+            font-weight: 780;
+        }
+
+
+        .mmct-dashboard .live-text {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+
+            color: #94a3b8;
+
+            font-size: 8px;
+        }
+
+
+        /* ==========================================================
+           KPI
+           ========================================================== */
+
+        .mmct-dashboard .kpi-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, minmax(0, 1fr));
+
+            gap: 13px;
+        }
+
+
+        .mmct-dashboard .kpi {
+            min-height: 166px;
+
+            padding: 18px;
+
+            position: relative;
+
+            border: 1px solid #e0e7ef;
+            border-radius: 13px;
+
+            background: #ffffff;
+
+            box-shadow:
+                0 3px 15px rgba(15,23,42,.035);
+
+            transition:
+                transform .2s ease,
+                box-shadow .2s ease;
+        }
+
+
+        .mmct-dashboard .kpi:hover {
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 11px 27px rgba(15,23,42,.075);
+        }
+
+
+        .mmct-dashboard .kpi.clickable {
+            cursor: pointer;
+        }
+
+
+        .mmct-dashboard .kpi::before {
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+            top: 0;
+            right: 0;
+
+            height: 3px;
+
+            background: #0d6efd;
+        }
+
+
+        .mmct-dashboard .kpi.green::before {
+            background: #198754;
+        }
+
+
+        .mmct-dashboard .kpi.purple::before {
+            background: #6f42c1;
+        }
+
+
+        .mmct-dashboard .kpi.orange::before {
+            background: #f59e0b;
+        }
+
+
+        .mmct-dashboard .kpi-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+
+        .mmct-dashboard .kpi-icon {
+            width: 39px;
+            height: 39px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 10px;
+
+            background: #eaf4ff;
+            color: #0d6efd;
+
+            font-size: 15px;
+        }
+
+
+        .mmct-dashboard .kpi.green .kpi-icon {
+            background: #eaf8f0;
+            color: #198754;
+        }
+
+
+        .mmct-dashboard .kpi.purple .kpi-icon {
+            background: #f3edff;
+            color: #6f42c1;
+        }
+
+
+        .mmct-dashboard .kpi.orange .kpi-icon {
+            background: #fff7df;
+            color: #a16207;
+        }
+
+
+        .mmct-dashboard .kpi-status {
+            padding: 3px 7px;
+
+            border-radius: 999px;
+
+            font-size: 7px;
+            font-weight: 850;
+        }
+
+
+        .mmct-dashboard .status-green {
+            background: #eaf8f0;
+            color: #198754;
+        }
+
+
+        .mmct-dashboard .status-yellow {
+            background: #fff7df;
+            color: #a16207;
+        }
+
+
+        .mmct-dashboard .kpi-value {
+            margin-top: 18px;
+
+            color: #172033;
+
+            font-size: 28px;
+            font-weight: 800;
+
+            line-height: 1;
+        }
+
+
+        .mmct-dashboard .kpi-value.ai {
+            font-size: 22px;
+        }
+
+
+        .mmct-dashboard .kpi-label {
+            margin-top: 7px;
+
+            color: #475569;
+
+            font-size: 10px;
+            font-weight: 700;
+        }
+
+
+        .mmct-dashboard .kpi-note {
+            margin-top: 12px;
+            padding-top: 9px;
+
+            border-top: 1px solid #eef2f6;
+
+            color: #9aa6b6;
+
+            font-size: 8px;
+        }
+
+
+        /* ==========================================================
+           MAIN WORKSPACE
+           ========================================================== */
+
+        .mmct-dashboard .workspace {
+            display: grid;
+
+            grid-template-columns:
+                minmax(0, 1.6fr)
+                minmax(330px, .9fr);
+
+            gap: 15px;
+
+            margin-top: 25px;
+        }
+
+
+        .mmct-dashboard .panel {
+            background: #ffffff;
+
+            border: 1px solid #e0e7ef;
+            border-radius: 13px;
+
+            box-shadow:
+                0 3px 15px rgba(15,23,42,.035);
+
+            overflow: hidden;
+        }
+
+
+        .mmct-dashboard .panel-header {
+            min-height: 70px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 15px;
+
+            padding: 16px 19px;
+
+            border-bottom: 1px solid #edf1f6;
+        }
+
+
+        .mmct-dashboard .panel-label {
+            color: #9aa6b6;
+
+            font-size: 7px;
+            font-weight: 800;
+
+            letter-spacing: .95px;
+        }
+
+
+        .mmct-dashboard .panel-title {
+            margin-top: 2px;
+
+            color: #1e293b;
+
+            font-size: 14px;
+            font-weight: 780;
+        }
+
+
+        .mmct-dashboard .panel-description {
+            margin-top: 3px;
+
+            color: #94a3b8;
+
+            font-size: 8px;
+        }
+
+
+        .mmct-dashboard .panel-action {
+            border: none;
+
+            background: transparent;
+
+            color: #0d6efd;
+
+            font-size: 9px;
+            font-weight: 750;
+
+            cursor: pointer;
+        }
+
+
+        .mmct-dashboard .panel-action:hover {
+            color: #0a58ca;
+        }
+
+
+        /* ==========================================================
+           PATIENT LIST
+           ========================================================== */
+
+        .mmct-dashboard .patient-list {
+            display: flex;
+            flex-direction: column;
+        }
+
+
+        .mmct-dashboard .patient-item {
+            min-height: 64px;
+
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            padding: 11px 17px;
+
+            border-bottom: 1px solid #f0f3f7;
+
+            cursor: pointer;
+
+            transition:
+                background .2s ease,
+                padding .2s ease;
+        }
+
+
+        .mmct-dashboard .patient-item:hover {
+            background: #f8fbff;
+            padding-left: 21px;
+        }
+
+
+        .mmct-dashboard .patient-item:last-child {
+            border-bottom: none;
+        }
+
+
+        .mmct-dashboard .patient-avatar {
+            width: 36px;
+            height: 36px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            flex: 0 0 36px;
+
+            border-radius: 10px;
+
+            background: #eaf4ff;
+            color: #0d6efd;
+        }
+
+
+        .mmct-dashboard .patient-details {
+            min-width: 0;
+            flex: 1;
+        }
+
+
+        .mmct-dashboard .patient-name {
+            overflow: hidden;
+
+            color: #334155;
+
+            font-size: 10px;
+            font-weight: 750;
+
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+
+        .mmct-dashboard .patient-meta {
+            margin-top: 3px;
+
+            display: flex;
+            align-items: center;
+            gap: 5px;
+
+            color: #94a3b8;
+
+            font-size: 8px;
+        }
+
+
+        .mmct-dashboard .patient-code {
+            color: #0d6efd;
+            font-weight: 700;
+        }
+
+
+        .mmct-dashboard .patient-status {
+            padding: 4px 7px;
+
+            border-radius: 999px;
+
+            background: #f1f5f9;
+
+            color: #64748b;
+
+            font-size: 7px;
+            font-weight: 800;
+        }
+
+
+        .mmct-dashboard .patient-arrow {
+            color: #c5ced8;
+
+            font-size: 10px;
+        }
+
+
+        .mmct-dashboard .empty {
+            min-height: 280px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            flex-direction: column;
+
+            padding: 30px;
+
+            text-align: center;
+        }
+
+
+        .mmct-dashboard .empty-icon {
+            width: 55px;
+            height: 55px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            margin-bottom: 10px;
+
+            border-radius: 15px;
+
+            background: #f1f5f9;
+            color: #94a3b8;
+
+            font-size: 22px;
+        }
+
+
+        .mmct-dashboard .empty-title {
+            color: #334155;
+
+            font-size: 12px;
+            font-weight: 750;
+        }
+
+
+        .mmct-dashboard .empty-text {
+            max-width: 290px;
+
+            margin: 5px 0 14px;
+
+            color: #94a3b8;
+
+            font-size: 9px;
+            line-height: 1.5;
+        }
+
+
+        /* ==========================================================
+           READINESS
+           ========================================================== */
+
+        .mmct-dashboard .readiness {
+            padding: 3px 19px 18px;
+        }
+
+
+        .mmct-dashboard .readiness-row {
+            min-height: 60px;
+
+            display: flex;
+            align-items: center;
+            gap: 9px;
+
+            border-bottom: 1px solid #eef2f6;
+        }
+
+
+        .mmct-dashboard .readiness-row:last-child {
+            border-bottom: none;
+        }
+
+
+        .mmct-dashboard .readiness-icon {
+            width: 32px;
+            height: 32px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 9px;
+
+            background: #f5f8fc;
+            color: #64748b;
+
+            font-size: 12px;
+        }
+
+
+        .mmct-dashboard .readiness-info {
+            flex: 1;
+        }
+
+
+        .mmct-dashboard .readiness-title {
+            color: #334155;
+
+            font-size: 9px;
+            font-weight: 750;
+        }
+
+
+        .mmct-dashboard .readiness-text {
+            margin-top: 2px;
+
+            color: #94a3b8;
+
+            font-size: 8px;
+        }
+
+
+        .mmct-dashboard .check {
+            width: 24px;
+            height: 24px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            font-size: 10px;
+        }
+
+
+        .mmct-dashboard .check.success {
+            background: #eaf8f0;
+            color: #198754;
+        }
+
+
+        .mmct-dashboard .check.pending {
+            background: #fff7df;
+            color: #a16207;
+        }
+
+
+        .mmct-dashboard .ai-notice {
+            margin-top: 12px;
+
+            display: flex;
+            align-items: flex-start;
+            gap: 9px;
+
+            padding: 11px;
+
+            border: 1px solid #d9e8f9;
+            border-radius: 10px;
+
+            background: #f7fbff;
+        }
+
+
+        .mmct-dashboard .ai-notice-icon {
+            width: 29px;
+            height: 29px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            flex: 0 0 29px;
+
+            border-radius: 8px;
+
+            background: #eaf4ff;
+            color: #0d6efd;
+        }
+
+
+        .mmct-dashboard .ai-notice-title {
+            color: #334155;
+
+            font-size: 8px;
+            font-weight: 800;
+        }
+
+
+        .mmct-dashboard .ai-notice-text {
+            margin-top: 3px;
+
+            color: #64748b;
+
+            font-size: 8px;
+
+            line-height: 1.5;
+        }
+
+
+        /* ==========================================================
+           QUICK ACTIONS
+           ========================================================== */
+
+        .mmct-dashboard .quick-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, minmax(0, 1fr));
+
+            gap: 11px;
+        }
+
+
+        .mmct-dashboard .quick-action {
+            min-height: 95px;
+
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            padding: 13px;
+
+            border: 1px solid #e0e7ef;
+            border-radius: 11px;
+
+            background: #ffffff;
+
+            cursor: pointer;
+
+            transition:
+                transform .2s ease,
+                box-shadow .2s ease,
+                border-color .2s ease;
+        }
+
+
+        .mmct-dashboard .quick-action:hover {
+            transform: translateY(-2px);
+
+            border-color: #bdd5f5;
+
+            box-shadow:
+                0 9px 21px rgba(15,23,42,.06);
+        }
+
+
+        .mmct-dashboard .quick-icon {
+            width: 36px;
+            height: 36px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            flex: 0 0 36px;
+
+            border-radius: 9px;
+
+            font-size: 13px;
+        }
+
+
+        .mmct-dashboard .quick-blue {
+            background: #eaf4ff;
+            color: #0d6efd;
+        }
+
+
+        .mmct-dashboard .quick-purple {
+            background: #f3edff;
+            color: #6f42c1;
+        }
+
+
+        .mmct-dashboard .quick-green {
+            background: #eaf8f0;
+            color: #198754;
+        }
+
+
+        .mmct-dashboard .quick-orange {
+            background: #fff7df;
+            color: #a16207;
+        }
+
+
+        .mmct-dashboard .quick-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+
+        .mmct-dashboard .quick-title {
+            display: block;
+
+            color: #334155;
+
+            font-size: 9px;
+            font-weight: 750;
+        }
+
+
+        .mmct-dashboard .quick-text {
+            display: block;
+
+            margin-top: 3px;
+
+            color: #94a3b8;
+
+            font-size: 8px;
+
+            line-height: 1.4;
+        }
+
+
+        .mmct-dashboard .quick-arrow {
+            color: #c4ccd6;
+        }
+
+
+        /* ==========================================================
+           WORKFLOW
+           ========================================================== */
+
+        .mmct-dashboard .workflow-panel {
+            margin-top: 25px;
+        }
+
+
+        .mmct-dashboard .workflow {
+            display: flex;
+
+            overflow-x: auto;
+
+            padding: 27px 20px 24px;
+        }
+
+
+        .mmct-dashboard .workflow-step {
+            position: relative;
+
+            min-width: 105px;
+
+            flex: 1;
+
+            text-align: center;
+        }
+
+
+        .mmct-dashboard .workflow-circle {
+            width: 34px;
+            height: 34px;
+
+            position: relative;
+            z-index: 2;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            margin: 0 auto 8px;
+
+            border: 2px solid #dae3ed;
+            border-radius: 50%;
+
+            background: #ffffff;
+
+            color: #94a3b8;
+
+            font-size: 9px;
+            font-weight: 850;
+        }
+
+
+        .mmct-dashboard .workflow-circle.active {
+            border-color: #0d6efd;
+
+            color: #0d6efd;
+
+            background: #eaf4ff;
+        }
+
+
+        .mmct-dashboard .workflow-circle.completed {
+            border-color: #198754;
+
+            background: #198754;
+
+            color: #ffffff;
+        }
+
+
+        .mmct-dashboard .workflow-title {
+            max-width: 85px;
+
+            margin: 0 auto;
+
+            color: #64748b;
+
+            font-size: 7px;
+            font-weight: 650;
+
+            line-height: 1.45;
+        }
+
+
+        .mmct-dashboard .workflow-line {
+            position: absolute;
+
+            top: 17px;
+            left: 60%;
+
+            width: 80%;
+            height: 1px;
+
+            background: #dbe3ed;
+        }
+
+
+        /* ==========================================================
+           SAFETY
+           ========================================================== */
+
+        .mmct-dashboard .safety {
+            margin-top: 25px;
+
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+
+            padding: 14px 16px;
+
+            border: 1px solid #dce8f7;
+            border-radius: 11px;
+
+            background: #f8fbff;
+        }
+
+
+        .mmct-dashboard .safety-icon {
+            width: 33px;
+            height: 33px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            flex: 0 0 33px;
+
+            border-radius: 9px;
+
+            background: #eaf4ff;
+            color: #0d6efd;
+        }
+
+
+        .mmct-dashboard .safety-title {
+            color: #334155;
+
+            font-size: 9px;
+            font-weight: 800;
+        }
+
+
+        .mmct-dashboard .safety-text {
+            margin-top: 3px;
+
+            color: #64748b;
+
+            font-size: 8px;
+
+            line-height: 1.55;
+        }
+
+
+        /* ==========================================================
+           RESPONSIVE
+           ========================================================== */
+
+        @media (max-width: 1200px) {
+
+            .mmct-dashboard .kpi-grid {
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+            }
+
+            .mmct-dashboard .quick-grid {
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+            }
+
+            .mmct-dashboard .workspace {
+                grid-template-columns: 1fr;
+            }
+        }
+
+
+        @media (max-width: 900px) {
+
+            .mmct-dashboard .sidebar {
+                width: 220px;
+            }
+
+            .mmct-dashboard .main {
+                margin-left: 220px;
+            }
+
+            .mmct-dashboard .search-box {
+                width: 160px;
+            }
+        }
+
+
+        @media (max-width: 700px) {
+
+            .mmct-dashboard .sidebar {
+                position: relative;
+
+                width: 100%;
+
+                height: auto;
+
+                border-right: none;
+                border-bottom: 1px solid #e5eaf1;
+            }
+
+            .mmct-dashboard .main {
+                margin-left: 0;
+            }
+
+            .mmct-dashboard .nav-list {
+                flex-direction: row;
+
+                overflow-x: auto;
+            }
+
+            .mmct-dashboard .nav-item {
+                min-width: 135px;
+            }
+
+            .mmct-dashboard .sidebar-bottom {
+                margin-top: 15px;
+            }
+
+            .mmct-dashboard .topbar {
+                padding: 0 14px;
+            }
+
+            .mmct-dashboard .topbar-title {
+                font-size: 13px;
+            }
+
+            .mmct-dashboard .search-box {
+                display: none;
+            }
+
+            .mmct-dashboard .top-name,
+            .mmct-dashboard .top-role {
+                display: none;
+            }
+
+            .mmct-dashboard .page {
+                padding: 17px 14px 45px;
+            }
+
+            .mmct-dashboard .hero {
+                flex-direction: column;
+                align-items: flex-start;
+
+                padding: 23px;
+            }
+
+            .mmct-dashboard .hero-actions {
+                width: 100%;
+                flex-direction: row;
+            }
+
+            .mmct-dashboard .hero-actions .btn {
+                flex: 1;
+            }
+
+            .mmct-dashboard .kpi-grid,
+            .mmct-dashboard .quick-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .mmct-dashboard .section-header {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+        }
+
+    </style>
+
+
+    <!-- ==========================================================
+         SIDEBAR
+         ========================================================== -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+
+            <div class="brand-logo">
+                <i class="bi bi-heart-pulse-fill"></i>
+            </div>
+
+            <div>
+                <div class="brand-title">
+                    MultiModalCancer
+                </div>
+
+                <div class="brand-subtitle">
+                    Precision Therapy Platform
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="sidebar-profile">
+
+            <div class="profile-avatar">
+                <i class="bi bi-person-fill"></i>
+            </div>
+
+            <div class="profile-info">
+
+                <div class="profile-name">
+                    {{ getUserName() }}
+                </div>
+
+                <div class="profile-role">
+                    {{ getUserRole() }}
+                </div>
+
+            </div>
+
+            <span class="profile-online"></span>
+
+        </div>
+
+
+        <div class="nav-label">
+            CLINICAL WORKSPACE
+        </div>
+
+
+        <nav class="nav-list">
+
+            <a
+                href="#!/dashboard"
+                class="nav-item active">
+
+                <span class="nav-icon">
+                    <i class="bi bi-grid-1x2-fill"></i>
+                </span>
+
+                <span class="nav-text">
+                    Dashboard
+                </span>
+
+            </a>
+
+
+            <a
+                href="#!/patients"
+                class="nav-item">
+
+                <span class="nav-icon">
+                    <i class="bi bi-person-vcard-fill"></i>
+                </span>
+
+                <span class="nav-text">
+                    Patient Registry
+                </span>
+
+            </a>
+
+
+            <a
+                href="#!/ai-analysis"
+                class="nav-item">
+
+                <span class="nav-icon">
+                    <i class="bi bi-cpu-fill"></i>
+                </span>
+
+                <span class="nav-text">
+                    AI Analysis
+                </span>
+
+                <span
+                    class="nav-ready"
+                    ng-if="isAIReady()">
+                    Ready
+                </span>
+
+            </a>
+
+
+            <a
+                href="#!/reports"
+                class="nav-item">
+
+                <span class="nav-icon">
+                    <i class="bi bi-file-earmark-medical-fill"></i>
+                </span>
+
+                <span class="nav-text">
+                    Reports
+                </span>
+
+            </a>
+
+
+            <a
+                href="#!/specialists"
+                class="nav-item">
+
+                <span class="nav-icon">
+                    <i class="bi bi-people-fill"></i>
+                </span>
+
+                <span class="nav-text">
+                    Specialist Review
+                </span>
+
+            </a>
+
+
+            <a
+                href="#!/workflow"
+                class="nav-item">
+
+                <span class="nav-icon">
+                    <i class="bi bi-diagram-3-fill"></i>
+                </span>
+
+                <span class="nav-text">
+                    Clinical Workflow
+                </span>
+
+            </a>
+
+        </nav>
+
+
+        <div class="nav-label">
+            ADMINISTRATION
+        </div>
+
+
+        <nav class="nav-list">
+
+            <a
+                href="#!/audit"
+                class="nav-item">
+
+                <span class="nav-icon">
+                    <i class="bi bi-shield-lock-fill"></i>
+                </span>
+
+                <span class="nav-text">
+                    Audit & Security
+                </span>
+
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <div class="secure-box">
+
+                <div class="secure-header">
+
+                    <div class="secure-icon">
+                        <i class="bi bi-shield-check"></i>
+                    </div>
+
+                    <div>
+
+                        <div class="secure-title">
+                            Secure Clinical Workspace
+                        </div>
+
+                        <div class="secure-text">
+                            Authenticated session
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="secure-status">
+
+                    <span class="green-dot"></span>
+
+                    <span>
+                        {{ systemHealth.overall
+                            ? 'All systems operational'
+                            : 'Checking services...' }}
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <button
+                class="logout-btn"
+                ng-click="logout()">
+
+                <i class="bi bi-box-arrow-left"></i>
+
+                Sign out
+
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ==========================================================
+         MAIN
+         ========================================================== -->
+
+    <section class="main">
+
+
+        <!-- ======================================================
+             TOPBAR
+             ====================================================== -->
+
+        <header class="topbar">
+
+            <div>
+
+                <div class="topbar-label">
+                    CLINICAL OPERATIONS
+                </div>
+
+                <div class="topbar-title">
+                    Patient Care Dashboard
+                </div>
+
+            </div>
+
+
+            <div class="topbar-right">
+
+                <a
+                    href="#!/patients"
+                    class="search-box">
+
+                    <i class="bi bi-search"></i>
+
+                    Search patients
+
+                    <span class="search-key">
+                        Ctrl K
+                    </span>
+
+                </a>
+
+
+                <button
+                    type="button"
+                    class="icon-button"
+                    title="Notifications">
+
+                    <i class="bi bi-bell"></i>
+
+                    <span class="notification"></span>
+
+                </button>
+
+
+                <div class="topbar-line"></div>
+
+
+                <div class="top-user">
+
+                    <div class="top-avatar">
+                        <i class="bi bi-person-fill"></i>
+                    </div>
+
+                    <div>
+
+                        <div class="top-name">
+                            {{ getUserName() }}
+                        </div>
+
+                        <div class="top-role">
+                            {{ getUserRole() }}
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ======================================================
+             PAGE CONTENT
+             ====================================================== -->
+
+        <main class="page">
+
+
+            <!-- ==================================================
+                 ERROR
+                 ================================================== -->
+
+            <div
+                ng-if="errorMessage"
+                class="alert alert-danger d-flex align-items-center gap-2 mb-4">
+
+                <i class="bi bi-exclamation-triangle-fill"></i>
+
+                <div class="flex-grow-1">
+                    {{ errorMessage }}
+                </div>
+
+                <button
+                    class="btn btn-sm btn-outline-danger"
+                    ng-click="refreshDashboard()">
+
+                    Retry
+
+                </button>
+
+            </div>
+
+
+            <!-- ==================================================
+                 HERO
+                 ================================================== -->
+
+            <section class="hero">
+
+                <div class="hero-content">
+
+                    <div class="hero-label">
+                        MULTIMODAL CANCER THERAPY
+                    </div>
+
+                    <h1>
+                        Welcome back,
+                        <span>
+                            {{ getUserName() }}
+                        </span>
+                    </h1>
+
+                    <p class="hero-description">
+                        Manage patient cases, review clinical
+                        evidence, run AI-assisted analysis and
+                        coordinate treatment workflow through
+                        one secure clinical workspace.
+                    </p>
+
+
+                    <div class="hero-meta">
+
+                        <span>
+                            <i class="bi bi-shield-check"></i>
+                            Secure Clinical Session
+                        </span>
+
+                        <span>
+                            <i class="bi bi-database-check"></i>
+                            PostgreSQL 17
+                        </span>
+
+                        <span>
+                            <i class="bi bi-cpu"></i>
+                            AI Decision Support
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="hero-actions">
+
+                    <button
+                        type="button"
+                        class="btn btn-primary"
+                        ng-click="registerPatient()">
+
+                        <i class="bi bi-person-plus-fill me-2"></i>
+
+                        Register Patient
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="btn btn-light border"
+                        ng-click="refreshDashboard()">
+
+                        <i class="bi bi-arrow-clockwise me-2"></i>
+
+                        Refresh
+
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==================================================
+                 KPI
+                 ================================================== -->
+
+            <section class="section">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <div class="section-label">
+                            LIVE OVERVIEW
+                        </div>
+
+                        <div class="section-title">
+                            Clinical Snapshot
+                        </div>
+
+                    </div>
+
+
+                    <div class="live-text">
+
+                        <span class="green-dot"></span>
+
+                        Live system data
+
+                    </div>
+
+                </div>
+
+
+                <div class="kpi-grid">
+
+
+                    <!-- Patients -->
+
+                    <div
+                        class="kpi clickable"
+                        ng-click="goToPatients()">
+
+                        <div class="kpi-top">
+
+                            <div class="kpi-icon">
+                                <i class="bi bi-person-vcard-fill"></i>
+                            </div>
+
+                            <span class="kpi-status status-green">
+                                Open
+                            </span>
+
+                        </div>
+
+                        <div class="kpi-value">
+                            {{ stats.totalPatients }}
+                        </div>
+
+                        <div class="kpi-label">
+                            Registered Patients
+                        </div>
+
+                        <div class="kpi-note">
+                            Open patient registry
+                        </div>
+
+                    </div>
+
+
+                    <!-- Active -->
+
+                    <div class="kpi green">
+
+                        <div class="kpi-top">
+
+                            <div class="kpi-icon">
+                                <i class="bi bi-activity"></i>
+                            </div>
+
+                            <span class="kpi-status status-green">
+                                Active
+                            </span>
+
+                        </div>
+
+                        <div class="kpi-value">
+                            {{ stats.activeCases }}
+                        </div>
+
+                        <div class="kpi-label">
+                            Active Clinical Cases
+                        </div>
+
+                        <div class="kpi-note">
+                            Cases in active workflow
+                        </div>
+
+                    </div>
+
+
+                    <!-- AI -->
+
+                    <div
+                        class="kpi purple clickable"
+                        ng-click="goToAIAnalysis()">
+
+                        <div class="kpi-top">
+
+                            <div class="kpi-icon">
+                                <i class="bi bi-cpu-fill"></i>
+                            </div>
+
+                            <span
+                                class="kpi-status"
+                                ng-class="isAIReady()
+                                    ? 'status-green'
+                                    : 'status-yellow'">
+
+                                {{ isAIReady()
+                                    ? 'Ready'
+                                    : 'Checking' }}
+
+                            </span>
+
+                        </div>
+
+                        <div class="kpi-value ai">
+
+                            {{ isAIReady()
+                                ? 'READY'
+                                : '—' }}
+
+                        </div>
+
+                        <div class="kpi-label">
+                            AI Decision Support
+                        </div>
+
+                        <div class="kpi-note">
+                            Clinical + ultrasound evidence
+                        </div>
+
+                    </div>
+
+
+                    <!-- Review -->
+
+                    <div class="kpi orange">
+
+                        <div class="kpi-top">
+
+                            <div class="kpi-icon">
+                                <i class="bi bi-person-check-fill"></i>
+                            </div>
+
+                            <span class="kpi-status status-yellow">
+                                Review
+                            </span>
+
+                        </div>
+
+                        <div class="kpi-value">
+                            {{ stats.pendingReviews }}
+                        </div>
+
+                        <div class="kpi-label">
+                            Doctor Review Queue
+                        </div>
+
+                        <div class="kpi-note">
+                            Responsible doctor review
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==================================================
+                 WORKSPACE
+                 ================================================== -->
+
+            <div class="workspace">
+
+
+                <!-- =================================================
+                     RECENT PATIENTS
+                     ================================================= -->
+
+                <section class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <div class="panel-label">
+                                PATIENT REGISTRY
+                            </div>
+
+                            <div class="panel-title">
+                                Recent Clinical Cases
+                            </div>
+
+                            <div class="panel-description">
+                                Latest patient records from PostgreSQL
+                            </div>
+
+                        </div>
+
+
+                        <button
+                            class="panel-action"
+                            ng-click="viewAllPatients()">
+
+                            View All
+
+                            <i class="bi bi-arrow-right ms-1"></i>
+
+                        </button>
+
+                    </div>
+
+
+                    <div>
+
+                        <!-- Loading -->
+
+                        <div
+                            ng-if="loading"
+                            class="empty">
+
+                            <div class="spinner-border spinner-border-sm text-primary"></div>
+
+                            <div class="mt-2 text-muted small">
+                                Loading patient records...
+                            </div>
+
+                        </div>
+
+
+                        <!-- Patients -->
+
+                        <div
+                            ng-if="!loading && recentPatients.length"
+                            class="patient-list">
+
+                            <div
+                                class="patient-item"
+                                ng-repeat="patient in recentPatients track by patient.id"
+                                ng-click="openPatient(patient)">
+
+                                <div class="patient-avatar">
+                                    <i class="bi bi-person-fill"></i>
+                                </div>
+
+
+                                <div class="patient-details">
+
+                                    <div class="patient-name">
+
+                                        {{ patient.full_name
+                                            || patient.name
+                                            || 'Unnamed Patient' }}
+
+                                    </div>
+
+
+                                    <div class="patient-meta">
+
+                                        <span class="patient-code">
+                                            {{ patient.patient_code
+                                                || 'N/A' }}
+                                        </span>
+
+                                        <span>•</span>
+
+                                        <span>
+                                            {{ patient.age || '—' }}
+                                            yrs
+                                        </span>
+
+                                        <span>•</span>
+
+                                        <span>
+                                            {{ patient.sex || '—' }}
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+
+                                <span
+                                    class="patient-status">
+
+                                    {{ patient.status
+                                        || patient.workflow_status
+                                        || 'Registered' }}
+
+                                </span>
+
+
+                                <i
+                                    class="bi bi-chevron-right patient-arrow">
+                                </i>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Empty -->
+
+                        <div
+                            ng-if="!loading && !recentPatients.length"
+                            class="empty">
+
+                            <div class="empty-icon">
+                                <i class="bi bi-person-vcard"></i>
+                            </div>
+
+                            <div class="empty-title">
+                                No patient records found
+                            </div>
+
+                            <div class="empty-text">
+                                Register a patient to begin
+                                the multimodal clinical workflow.
+                            </div>
+
+                            <button
+                                class="btn btn-primary btn-sm"
+                                ng-click="registerPatient()">
+
+                                <i class="bi bi-person-plus-fill me-1"></i>
+
+                                Register Patient
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                     SYSTEM READINESS
+                     ================================================= -->
+
+                <section class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <div class="panel-label">
+                                PLATFORM
+                            </div>
+
+                            <div class="panel-title">
+                                System Readiness
+                            </div>
+
+                            <div class="panel-description">
+                                Backend, database and AI models
+                            </div>
+
+                        </div>
+
+                        <span
+                            class="kpi-status"
+                            ng-class="systemHealth.overall
+                                ? 'status-green'
+                                : 'status-yellow'">
+
+                            {{ systemHealth.overall
+                                ? 'Operational'
+                                : 'Checking' }}
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="readiness">
+
+
+                        <!-- Backend -->
+
+                        <div class="readiness-row">
+
+                            <div class="readiness-icon">
+                                <i class="bi bi-server"></i>
+                            </div>
+
+                            <div class="readiness-info">
+
+                                <div class="readiness-title">
+                                    FastAPI Backend
+                                </div>
+
+                                <div class="readiness-text">
+                                    Application service
+                                </div>
+
+                            </div>
+
+                            <span
+                                class="check"
+                                ng-class="systemHealth.backend
+                                    ? 'success'
+                                    : 'pending'">
+
+                                <i
+                                    class="bi"
+                                    ng-class="systemHealth.backend
+                                        ? 'bi-check-lg'
+                                        : 'bi-three-dots'">
+                                </i>
+
+                            </span>
+
+                        </div>
+
+
+                        <!-- PostgreSQL -->
+
+                        <div class="readiness-row">
+
+                            <div class="readiness-icon">
+                                <i class="bi bi-database-fill"></i>
+                            </div>
+
+                            <div class="readiness-info">
+
+                                <div class="readiness-title">
+                                    PostgreSQL 17
+                                </div>
+
+                                <div class="readiness-text">
+                                    Clinical data persistence
+                                </div>
+
+                            </div>
+
+                            <span
+                                class="check"
+                                ng-class="systemHealth.database
+                                    ? 'success'
+                                    : 'pending'">
+
+                                <i
+                                    class="bi"
+                                    ng-class="systemHealth.database
+                                        ? 'bi-check-lg'
+                                        : 'bi-three-dots'">
+                                </i>
+
+                            </span>
+
+                        </div>
+
+
+                        <!-- Clinical Model -->
+
+                        <div class="readiness-row">
+
+                            <div class="readiness-icon">
+                                <i class="bi bi-clipboard2-pulse-fill"></i>
+                            </div>
+
+                            <div class="readiness-info">
+
+                                <div class="readiness-title">
+                                    Clinical Model
+                                </div>
+
+                                <div class="readiness-text">
+                                    Trained inference artifact
+                                </div>
+
+                            </div>
+
+                            <span
+                                class="check"
+                                ng-class="aiStatus.clinical_model.exists
+                                    ? 'success'
+                                    : 'pending'">
+
+                                <i
+                                    class="bi"
+                                    ng-class="aiStatus.clinical_model.exists
+                                        ? 'bi-check-lg'
+                                        : 'bi-three-dots'">
+                                </i>
+
+                            </span>
+
+                        </div>
+
+
+                        <!-- Ultrasound -->
+
+                        <div class="readiness-row">
+
+                            <div class="readiness-icon">
+                                <i class="bi bi-image-fill"></i>
+                            </div>
+
+                            <div class="readiness-info">
+
+                                <div class="readiness-title">
+                                    Ultrasound Model
+                                </div>
+
+                                <div class="readiness-text">
+                                    Segmentation inference artifact
+                                </div>
+
+                            </div>
+
+                            <span
+                                class="check"
+                                ng-class="aiStatus.ultrasound_model.exists
+                                    ? 'success'
+                                    : 'pending'">
+
+                                <i
+                                    class="bi"
+                                    ng-class="aiStatus.ultrasound_model.exists
+                                        ? 'bi-check-lg'
+                                        : 'bi-three-dots'">
+                                </i>
+
+                            </span>
+
+                        </div>
+
+
+                        <!-- AI safety -->
+
+                        <div class="ai-notice">
+
+                            <div class="ai-notice-icon">
+                                <i class="bi bi-shield-check"></i>
+                            </div>
+
+                            <div>
+
+                                <div class="ai-notice-title">
+                                    Clinical Decision Support Only
+                                </div>
+
+                                <div class="ai-notice-text">
+                                    AI results are supportive evidence.
+                                    Final treatment authority remains
+                                    with the Senior/Treating Doctor.
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+            </div>
+
+
+            <!-- ==================================================
+                 TRAINING DATA & MODEL INSIGHTS (REAL PROJECT DATA)
+                 ================================================== -->
+
+            <section
+                class="section"
+                ng-if="
+                    trainingInfo.available ||
+                    modelMetrics.clinical ||
+                    modelMetrics.ultrasound
+                ">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <div class="section-label">
+                            EXISTING PROJECT DATA
+                        </div>
+
+                        <div class="section-title">
+                            Training Data &amp; Model Insights
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="workspace">
+
+                    <div class="panel">
+
+                        <div class="panel-header">
+
+                            <div>
+
+                                <div class="panel-label">
+                                    TRAINING DATASET
+                                </div>
+
+                                <div class="panel-title">
+                                    Clinical CSV
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div
+                            class="p-3"
+                            ng-if="trainingInfo.available">
+
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="text-muted">File</span>
+                                <strong>{{ trainingInfo.fileName }}</strong>
+                            </div>
+
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="text-muted">Records</span>
+                                <strong>{{ trainingInfo.rows }}</strong>
+                            </div>
+
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="text-muted">Columns</span>
+                                <strong>{{ trainingInfo.columns }}</strong>
+                            </div>
+
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="text-muted">Diagnosis classes</span>
+                                <strong>{{ trainingInfo.targetClasses }}</strong>
+                            </div>
+
+                            <div
+                                class="d-flex justify-content-between mb-2"
+                                ng-if="trainingInfo.ageStatistics">
+
+                                <span class="text-muted">Age (mean)</span>
+                                <strong>{{ trainingInfo.ageStatistics.mean }}</strong>
+
+                            </div>
+
+                        </div>
+
+                        <div
+                            class="p-3 text-muted"
+                            ng-if="!trainingInfo.available">
+
+                            Not available
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="panel">
+
+                        <div class="panel-header">
+
+                            <div>
+
+                                <div class="panel-label">
+                                    TRAINED MODELS
+                                </div>
+
+                                <div class="panel-title">
+                                    Performance
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="p-3">
+
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="text-muted">Clinical model</span>
+                                <strong>
+                                    {{ clinicalTraining.model_name
+                                        || 'Clinical Random Forest' }}
+                                </strong>
+                            </div>
+
+                            <div
+                                class="d-flex justify-content-between mb-2"
+                                ng-if="modelMetrics.clinical">
+
+                                <span class="text-muted">Accuracy</span>
+                                <strong>
+                                    {{ (modelMetrics.clinical.accuracy * 100)
+                                        | number:2 }}%
+                                </strong>
+
+                            </div>
+
+                            <div
+                                class="d-flex justify-content-between mb-2"
+                                ng-if="modelMetrics.clinical">
+
+                                <span class="text-muted">Weighted F1</span>
+                                <strong>
+                                    {{ (modelMetrics.clinical.weighted_f1 * 100)
+                                        | number:2 }}%
+                                </strong>
+
+                            </div>
+
+                            <div
+                                class="d-flex justify-content-between mb-2"
+                                ng-if="modelMetrics.ultrasound">
+
+                                <span class="text-muted">Ultrasound test Dice</span>
+                                <strong>
+                                    {{ (modelMetrics.ultrasound.test_dice * 100)
+                                        | number:2 }}%
+                                </strong>
+
+                            </div>
+
+                            <div
+                                class="d-flex justify-content-between mb-2"
+                                ng-if="modelMetrics.ultrasound">
+
+                                <span class="text-muted">Processed images</span>
+                                <strong>
+                                    {{ modelMetrics.ultrasound.total_processed_images
+                                        || 'N/A' }}
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="workspace mt-3">
+
+                    <div class="panel">
+
+                        <div class="panel-header">
+
+                            <div>
+
+                                <div class="panel-label">
+                                    CSV DISTRIBUTION
+                                </div>
+
+                                <div class="panel-title">
+                                    Top training diagnoses
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div
+                            class="p-3"
+                            style="height:280px; position:relative;">
+
+                            <canvas id="mmctDiagnosisChart"></canvas>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="panel">
+
+                        <div class="panel-header">
+
+                            <div>
+
+                                <div class="panel-label">
+                                    MODEL PERFORMANCE
+                                </div>
+
+                                <div class="panel-title">
+                                    Clinical and ultrasound metrics
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div
+                            class="p-3"
+                            style="height:280px; position:relative;">
+
+                            <canvas id="mmctModelChart"></canvas>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==================================================
+                 QUICK ACTIONS
+                 ================================================== -->
+
+            <section class="section">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <div class="section-label">
+                            QUICK ACCESS
+                        </div>
+
+                        <div class="section-title">
+                            Clinical Actions
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="quick-grid">
+
+
+                    <button
+                        type="button"
+                        class="quick-action"
+                        ng-click="goToPatients()">
+
+                        <span class="quick-icon quick-blue">
+                            <i class="bi bi-person-vcard-fill"></i>
+                        </span>
+
+                        <span class="quick-content">
+
+                            <span class="quick-title">
+                                Patient Registry
+                            </span>
+
+                            <span class="quick-text">
+                                Search and manage patient records
+                            </span>
+
+                        </span>
+
+                        <i class="bi bi-arrow-right quick-arrow"></i>
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="quick-action"
+                        ng-click="goToAIAnalysis()">
+
+                        <span class="quick-icon quick-purple">
+                            <i class="bi bi-cpu-fill"></i>
+                        </span>
+
+                        <span class="quick-content">
+
+                            <span class="quick-title">
+                                AI Analysis
+                            </span>
+
+                            <span class="quick-text">
+                                Review clinical and ultrasound evidence
+                            </span>
+
+                        </span>
+
+                        <i class="bi bi-arrow-right quick-arrow"></i>
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="quick-action"
+                        ng-click="goToReports()">
+
+                        <span class="quick-icon quick-green">
+                            <i class="bi bi-file-earmark-medical-fill"></i>
+                        </span>
+
+                        <span class="quick-content">
+
+                            <span class="quick-title">
+                                Reports
+                            </span>
+
+                            <span class="quick-text">
+                                Review patient reports and evidence
+                            </span>
+
+                        </span>
+
+                        <i class="bi bi-arrow-right quick-arrow"></i>
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="quick-action"
+                        ng-click="goToWorkflow()">
+
+                        <span class="quick-icon quick-orange">
+                            <i class="bi bi-diagram-3-fill"></i>
+                        </span>
+
+                        <span class="quick-content">
+
+                            <span class="quick-title">
+                                Clinical Workflow
+                            </span>
+
+                            <span class="quick-text">
+                                Track patient care progression
+                            </span>
+
+                        </span>
+
+                        <i class="bi bi-arrow-right quick-arrow"></i>
+
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==================================================
+                 WORKFLOW
+                 ================================================== -->
+
+            <section class="panel workflow-panel">
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <div class="panel-label">
+                            CARE PATHWAY
+                        </div>
+
+                        <div class="panel-title">
+                            11-Step Clinical Workflow
+                        </div>
+
+                        <div class="panel-description">
+                            From patient registration to final decision
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        class="panel-action"
+                        ng-click="goToWorkflow()">
+
+                        Open Workflow
+
+                        <i class="bi bi-arrow-right ms-1"></i>
+
+                    </button>
+
+                </div>
+
+
+                <div class="workflow">
+
+                    <div
+                        class="workflow-step"
+                        ng-repeat="step in workflowSteps track by step.step">
+
+                        <div
+                            class="workflow-circle"
+                            ng-class="{
+                                'active':
+                                    step.status === 'Active',
+
+                                'completed':
+                                    step.status === 'Completed'
+                            }">
+
+                            {{ step.step }}
+
+                        </div>
+
+                        <div class="workflow-title">
+                            {{ step.title }}
+                        </div>
+
+                        <div
+                            ng-if="!$last"
+                            class="workflow-line">
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==================================================
+                 SAFETY
+                 ================================================== -->
+
+            <section class="safety">
+
+                <div class="safety-icon">
+                    <i class="bi bi-shield-fill-check"></i>
+                </div>
+
+                <div>
+
+                    <div class="safety-title">
+                        Clinical Safety & Decision Authority
+                    </div>
+
+                    <div class="safety-text">
+                        MultiModalCancerTherapy provides
+                        AI-assisted clinical decision support only.
+                        AI results must be interpreted with available
+                        clinical evidence. The Senior/Treating Doctor
+                        remains the final treatment decision authority.
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </section>
+
+</div>

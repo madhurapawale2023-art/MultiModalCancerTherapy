@@ -1,0 +1,12 @@
+{
+    "fusion_type": "late_evidence_integration",
+    "supervised_fusion_training": false,
+    "reason": "Clinical patient IDs and ultrasound case numbers have no documented common identifier.",
+    "clinical_model": "models/clinical/clinical_model.joblib",
+    "ultrasound_model": "models/image/ultrasound_unet_clean.pth",
+    "tirads_classifier_used": false,
+    "clinical_output": "Diagnosis probability distribution",
+    "ultrasound_output": "Segmentation-based imaging evidence",
+    "final_decision_authority": "Senior Doctor",
+    "ai_role": "Clinical decision support only"
+}

@@ -1,0 +1,23 @@
+{
+    "model_name": "UNetSmall",
+    "model_type": "Binary Ultrasound Segmentation",
+    "input_channels": 3,
+    "output_channels": 1,
+    "image_size": [
+        224,
+        224
+    ],
+    "epochs": 10,
+    "learning_rate": 0.001,
+    "batch_size": 8,
+    "device": "cpu",
+    "training_images": 366,
+    "validation_images": 44,
+    "test_images": 56,
+    "total_processed_images": 466,
+    "valid_annotation_images": 466,
+    "validation_dice": 0.5392648229996363,
+    "validation_iou": 0.40079814940690994,
+    "test_dice": 0.5316900185176304,
+    "test_iou": 0.40255976149014067
+}

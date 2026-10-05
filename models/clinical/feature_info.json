@@ -1,0 +1,49 @@
+{
+    "model_name": "Clinical Random Forest",
+    "model_type": "RandomForestClassifier",
+    "n_estimators": 300,
+    "class_weight": "balanced",
+    "random_state": 42,
+    "training_records": 1916,
+    "testing_records": 480,
+    "processed_features": 34,
+    "number_of_classes": 26,
+    "classes": [
+        "A",
+        "AK",
+        "B",
+        "C",
+        "C|I",
+        "D",
+        "F",
+        "FK",
+        "G",
+        "GI",
+        "GK",
+        "H|K",
+        "I",
+        "J",
+        "K",
+        "KJ",
+        "L",
+        "M",
+        "MI",
+        "MK",
+        "N",
+        "O",
+        "P",
+        "Q",
+        "R",
+        "S"
+    ],
+    "dropped_columns": [
+        "patient_id",
+        "TBG"
+    ],
+    "metrics": {
+        "accuracy": 0.91875,
+        "precision_weighted": 0.9149704837419369,
+        "recall_weighted": 0.91875,
+        "f1_weighted": 0.9124315100764948
+    }
+}

@@ -1,0 +1,31 @@
+{
+    "clinical_model": {
+        "model": "RandomForestClassifier",
+        "accuracy": 0.9187,
+        "weighted_precision": 0.915,
+        "weighted_recall": 0.9187,
+        "weighted_f1": 0.9124
+    },
+    "ultrasound_segmentation": {
+        "model": "UNetSmall",
+        "best_epoch": 8,
+        "best_validation_loss": 0.6171,
+        "test_dice": 0.549,
+        "test_iou": 0.4107
+    },
+    "tirads_classifier": {
+        "used_in_final_fusion": false,
+        "reason": "Current TIRADS classifier performance was insufficient for final decision-support use.",
+        "test_accuracy_previous": 0.1081
+    },
+    "multimodal": {
+        "fusion_type": "Late Evidence Integration",
+        "supervised_fusion_training": false,
+        "clinical_ultrasound_common_id": false,
+        "artificial_pairing": false,
+        "clinical_records": 2396,
+        "ultrasound_images": 455,
+        "final_decision_authority": "Senior Doctor",
+        "ai_role": "Clinical Decision Support Only"
+    }
+}

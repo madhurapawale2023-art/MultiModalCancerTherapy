@@ -1,0 +1,1048 @@
+<style>
+  .reports-page {
+    min-height: calc(100vh - 70px);
+    background:
+      radial-gradient(circle at 10% 8%, rgba(13,110,253,.07), transparent 28%),
+      radial-gradient(circle at 90% 12%, rgba(32,201,151,.06), transparent 25%),
+      linear-gradient(180deg, #f7fbff 0%, #eef5fb 100%);
+    padding: 28px 0 50px;
+  }
+
+  .reports-header {
+    margin-bottom: 24px;
+  }
+
+  .reports-eyebrow {
+    color: #0d6efd;
+    font-size: .75rem;
+    font-weight: 800;
+    letter-spacing: .13em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .reports-header h1 {
+    margin: 0;
+    color: #102a43;
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: -.02em;
+  }
+
+  .reports-header p {
+    margin: 8px 0 0;
+    color: #6c7f94;
+    max-width: 840px;
+  }
+
+  .report-card {
+    background: rgba(255,255,255,.97);
+    border: 1px solid #dce8f4;
+    border-radius: 18px;
+    box-shadow: 0 12px 30px rgba(27,64,96,.07);
+    overflow: hidden;
+  }
+
+  .report-card-header {
+    padding: 18px 20px;
+    border-bottom: 1px solid #e7eef6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+
+  .report-card-header h3 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 800;
+    color: #173a57;
+  }
+
+  .report-card-header p {
+    margin: 4px 0 0;
+    font-size: .8rem;
+    color: #75879b;
+  }
+
+  .report-card-body {
+    padding: 20px;
+  }
+
+  .toolbar {
+    display: flex;
+    gap: 9px;
+    flex-wrap: wrap;
+  }
+
+  .btn-report {
+    border-radius: 10px;
+    font-weight: 700;
+    min-height: 40px;
+  }
+
+  .patient-selector {
+    background: #f5f9fd;
+    border: 1px solid #dbe6f0;
+    border-radius: 14px;
+    padding: 15px;
+    margin-bottom: 18px;
+  }
+
+  .form-label {
+    color: #3e5870;
+    font-size: .8rem;
+    font-weight: 700;
+    margin-bottom: 7px;
+  }
+
+  .form-control,
+  .form-select {
+    border-radius: 10px;
+    border-color: #cfdae7;
+    min-height: 43px;
+  }
+
+  .form-control:focus,
+  .form-select:focus {
+    border-color: #80b7ff;
+    box-shadow: 0 0 0 .2rem rgba(13,110,253,.1);
+  }
+
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .summary-box {
+    border: 1px solid #dfe8f1;
+    background: #fbfdff;
+    border-radius: 14px;
+    padding: 16px;
+  }
+
+  .summary-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 11px;
+    background: #eaf3ff;
+    color: #0d6efd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 11px;
+  }
+
+  .summary-label {
+    display: block;
+    font-size: .7rem;
+    color: #76889b;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+  }
+
+  .summary-value {
+    display: block;
+    color: #173a57;
+    font-weight: 800;
+    font-size: 1.15rem;
+    margin-top: 4px;
+  }
+
+  .section-block {
+    border: 1px solid #dfe8f1;
+    border-radius: 14px;
+    background: #fff;
+    margin-bottom: 16px;
+    overflow: hidden;
+  }
+
+  .section-title {
+    padding: 14px 16px;
+    background: #f6f9fc;
+    border-bottom: 1px solid #e4ebf2;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    color: #24445e;
+    font-size: .88rem;
+    font-weight: 800;
+  }
+
+  .section-content {
+    padding: 16px;
+  }
+
+  .detail-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 11px 14px;
+  }
+
+  .detail-item {
+    padding: 11px 12px;
+    border: 1px solid #e6edf4;
+    border-radius: 10px;
+    background: #fbfdff;
+  }
+
+  .detail-item .label {
+    display: block;
+    font-size: .69rem;
+    color: #7a8c9e;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  .detail-item .value {
+    color: #29465f;
+    font-size: .81rem;
+    font-weight: 700;
+    word-break: break-word;
+  }
+
+  .ai-highlight {
+    border: 1px solid #cfe0f4;
+    border-radius: 13px;
+    padding: 15px;
+    background: linear-gradient(135deg, #eef6ff, #f9fcff);
+  }
+
+  .ai-highlight h4 {
+    margin: 0 0 8px;
+    color: #163b5c;
+    font-size: .92rem;
+    font-weight: 800;
+  }
+
+  .ai-highlight p {
+    margin: 0;
+    color: #5e7287;
+    line-height: 1.65;
+    font-size: .81rem;
+  }
+
+  .recommendation-box {
+    border: 1px solid #d7e9df;
+    background: #f4fbf7;
+    border-radius: 13px;
+    padding: 15px;
+  }
+
+  .recommendation-box h4 {
+    margin: 0 0 8px;
+    font-size: .9rem;
+    color: #18573e;
+    font-weight: 800;
+  }
+
+  .recommendation-box p {
+    margin: 0;
+    color: #4d6e5e;
+    font-size: .81rem;
+    line-height: 1.65;
+  }
+
+  .status-badge {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 999px;
+    padding: 6px 10px;
+    font-size: .68rem;
+    font-weight: 800;
+  }
+
+  .status-success {
+    background: #eaf8f1;
+    color: #147247;
+  }
+
+  .status-warning {
+    background: #fff6dd;
+    color: #8a6100;
+  }
+
+  .status-neutral {
+    background: #eef3f8;
+    color: #536b81;
+  }
+
+  .table-wrap {
+    overflow-x: auto;
+  }
+
+  .report-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 650px;
+  }
+
+  .report-table th {
+    background: #f6f9fc;
+    color: #61758a;
+    font-size: .7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    padding: 11px 12px;
+    border-bottom: 1px solid #dfe8f1;
+    white-space: nowrap;
+  }
+
+  .report-table td {
+    padding: 12px;
+    border-bottom: 1px solid #edf2f6;
+    color: #3d566e;
+    font-size: .78rem;
+    vertical-align: middle;
+  }
+
+  .report-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  .empty-state {
+    text-align: center;
+    padding: 42px 20px;
+    color: #7c8fa2;
+  }
+
+  .empty-state i {
+    display: block;
+    font-size: 2.1rem;
+    color: #a3b5c6;
+    margin-bottom: 10px;
+  }
+
+  .loading-state {
+    background: #f4f8fc;
+    border-radius: 12px;
+    padding: 18px;
+    text-align: center;
+    color: #60778e;
+    margin-bottom: 18px;
+  }
+
+  .error-state {
+    border: 1px solid #f0caca;
+    background: #fff2f2;
+    color: #8b3434;
+    padding: 13px 15px;
+    border-radius: 11px;
+    margin-bottom: 18px;
+    font-size: .8rem;
+  }
+
+  .safety-notice {
+    border: 1px solid #cfe0f2;
+    background: linear-gradient(90deg, #eef6ff, #f8fbff);
+    border-radius: 14px;
+    padding: 15px 17px;
+    color: #486176;
+    font-size: .78rem;
+    line-height: 1.65;
+  }
+
+  .safety-notice strong {
+    color: #1c3e5a;
+  }
+
+  .ultrasound-image {
+    width: 100%;
+    max-height: 260px;
+    object-fit: contain;
+    border-radius: 12px;
+    background: #0d1825;
+    border: 1px solid #d9e3ed;
+  }
+
+  .file-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid #edf2f6;
+  }
+
+  .file-row:last-child {
+    border-bottom: none;
+  }
+
+  .file-name {
+    font-size: .78rem;
+    font-weight: 700;
+    color: #304b62;
+  }
+
+  .file-meta {
+    font-size: .7rem;
+    color: #7a8da0;
+  }
+
+  @media (max-width: 1100px) {
+    .summary-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .reports-page {
+      padding-top: 18px;
+    }
+
+    .reports-header h1 {
+      font-size: 1.55rem;
+    }
+
+    .summary-grid,
+    .detail-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .report-card-header,
+    .report-card-body {
+      padding: 15px;
+    }
+  }
+</style>
+
+<section class="reports-page" ng-controller="ReportController">
+
+  <div class="container-fluid px-3 px-lg-4">
+
+    <!-- HEADER -->
+    <div class="reports-header">
+      <div class="reports-eyebrow">Clinical Reporting Workspace</div>
+
+      <h1>
+        <i class="bi bi-file-earmark-medical me-2"></i>
+        Clinical Reports
+      </h1>
+
+      <p>
+        Review patient-level clinical evidence, ultrasound findings,
+        AI-supported analysis and report information in one place.
+      </p>
+    </div>
+
+    <!-- TOOLBAR -->
+    <div class="report-card mb-4">
+      <div class="report-card-body">
+
+        <div class="row g-3 align-items-end">
+
+          <div class="col-lg-7">
+            <div class="patient-selector mb-0">
+
+              <label class="form-label">
+                Select Patient
+              </label>
+
+              <select
+                class="form-select"
+                ng-model="selectedPatientId"
+                ng-change="loadPatientReport(selectedPatientId)">
+
+                <option value="">
+                  Select a patient to view report
+                </option>
+
+                <option
+                  ng-repeat="patient in patients track by patient.id"
+                  value="{{ patient.id }}">
+                  {{ patient.patient_code }} — {{ patient.full_name }}
+                </option>
+
+              </select>
+
+            </div>
+          </div>
+
+          <div class="col-lg-5">
+
+            <div class="toolbar justify-content-lg-end">
+
+              <button
+                type="button"
+                class="btn btn-outline-primary btn-report"
+                ng-click="refresh()">
+                <i class="bi bi-arrow-clockwise me-1"></i>
+                Refresh
+              </button>
+
+              <button
+                type="button"
+                class="btn btn-primary btn-report"
+                ng-click="downloadReport()"
+                ng-disabled="!selectedPatientId">
+                <i class="bi bi-download me-1"></i>
+                Download Report
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- LOADING -->
+    <div
+      class="loading-state"
+      ng-if="loading">
+
+      <div class="spinner-border spinner-border-sm text-primary me-2"></div>
+
+      Loading clinical report...
+    </div>
+
+    <!-- ERROR -->
+    <div
+      class="error-state"
+      ng-if="errorMessage && !loading">
+
+      <i class="bi bi-exclamation-triangle me-2"></i>
+      {{ errorMessage }}
+
+    </div>
+
+    <!-- REPORT CONTENT -->
+    <div ng-if="!loading && selectedPatientId">
+
+      <!-- SUMMARY -->
+      <div class="summary-grid">
+
+        <div class="summary-box">
+          <div class="summary-icon">
+            <i class="bi bi-person"></i>
+          </div>
+
+          <span class="summary-label">Patient</span>
+
+          <span class="summary-value">
+            {{ reportSummary.patient_code || reportSummary.patient_name || '—' }}
+          </span>
+        </div>
+
+        <div class="summary-box">
+          <div class="summary-icon">
+            <i class="bi bi-activity"></i>
+          </div>
+
+          <span class="summary-label">Clinical Evidence</span>
+
+          <span class="summary-value">
+            {{ clinicalData ? 'Available' : 'Pending' }}
+          </span>
+        </div>
+
+        <div class="summary-box">
+          <div class="summary-icon">
+            <i class="bi bi-image"></i>
+          </div>
+
+          <span class="summary-label">Ultrasound</span>
+
+          <span class="summary-value">
+            {{ ultrasoundData ? 'Available' : 'Pending' }}
+          </span>
+        </div>
+
+        <div class="summary-box">
+          <div class="summary-icon">
+            <i class="bi bi-cpu"></i>
+          </div>
+
+          <span class="summary-label">AI Analysis</span>
+
+          <span class="summary-value">
+            {{ aiData ? 'Available' : 'Pending' }}
+          </span>
+        </div>
+
+      </div>
+
+      <!-- PATIENT INFORMATION -->
+      <div class="report-card mb-4">
+
+        <div class="report-card-header">
+          <div>
+            <h3>
+              <i class="bi bi-person-vcard me-2 text-primary"></i>
+              Patient Information
+            </h3>
+
+            <p>
+              Basic patient identity and report context.
+            </p>
+          </div>
+
+          <span
+            class="status-badge"
+            ng-class="reportSummary.status ? 'status-success' : 'status-neutral'">
+            {{ reportSummary.status || 'Report Ready' }}
+          </span>
+        </div>
+
+        <div class="report-card-body">
+
+          <div class="detail-grid">
+
+            <div class="detail-item">
+              <span class="label">Patient Code</span>
+              <span class="value">
+                {{ reportSummary.patient_code || reportSummary.patientCode || '—' }}
+              </span>
+            </div>
+
+            <div class="detail-item">
+              <span class="label">Patient Name</span>
+              <span class="value">
+                {{ reportSummary.patient_name || reportSummary.full_name || '—' }}
+              </span>
+            </div>
+
+            <div class="detail-item">
+              <span class="label">Age</span>
+              <span class="value">
+                {{ reportSummary.age || '—' }}
+              </span>
+            </div>
+
+            <div class="detail-item">
+              <span class="label">Sex</span>
+              <span class="value">
+                {{ reportSummary.sex || '—' }}
+              </span>
+            </div>
+
+            <div class="detail-item">
+              <span class="label">Workflow Status</span>
+              <span class="value">
+                {{ reportSummary.workflow_status || reportSummary.status || '—' }}
+              </span>
+            </div>
+
+            <div class="detail-item">
+              <span class="label">Report Date</span>
+              <span class="value">
+                {{ reportSummary.created_at || reportSummary.report_date || '—' }}
+              </span>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+      <!-- CLINICAL -->
+      <div
+        class="report-card mb-4"
+        ng-if="clinicalData">
+
+        <div class="report-card-header">
+          <div>
+            <h3>
+              <i class="bi bi-clipboard2-pulse me-2 text-primary"></i>
+              Clinical Information
+            </h3>
+
+            <p>
+              Clinical and laboratory evidence available for review.
+            </p>
+          </div>
+        </div>
+
+        <div class="report-card-body">
+
+          <div class="detail-grid">
+
+            <div
+              class="detail-item"
+              ng-repeat="(key, value) in clinicalData">
+
+              <span class="label">
+                {{ formatLabel(key) }}
+              </span>
+
+              <span class="value">
+                {{ formatValue(value) }}
+              </span>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ULTRASOUND -->
+      <div
+        class="report-card mb-4"
+        ng-if="ultrasoundData">
+
+        <div class="report-card-header">
+          <div>
+            <h3>
+              <i class="bi bi-image me-2 text-primary"></i>
+              Ultrasound Evidence
+            </h3>
+
+            <p>
+              Imaging evidence and available segmentation information.
+            </p>
+          </div>
+        </div>
+
+        <div class="report-card-body">
+
+          <div class="row g-4">
+
+            <div class="col-lg-7">
+
+              <div
+                class="table-wrap"
+                ng-if="ultrasoundData.images">
+
+                <table class="report-table">
+
+                  <thead>
+                    <tr>
+                      <th>Image</th>
+                      <th>Region</th>
+                      <th>Annotation</th>
+                      <th>Area Ratio</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+
+                    <tr
+                      ng-repeat="image in ultrasoundData.images track by $index">
+
+                      <td>
+                        {{ image.image_filename || image.filename || ('Image ' + ($index + 1)) }}
+                      </td>
+
+                      <td>
+                        {{ image.region_type || '—' }}
+                      </td>
+
+                      <td>
+                        <span
+                          class="status-badge"
+                          ng-class="image.has_annotation ? 'status-success' : 'status-neutral'">
+                          {{ image.has_annotation ? 'Annotated' : 'No Annotation' }}
+                        </span>
+                      </td>
+
+                      <td>
+                        {{ image.segmentation_area_ratio || '—' }}
+                      </td>
+
+                    </tr>
+
+                  </tbody>
+
+                </table>
+
+              </div>
+
+              <div
+                class="detail-grid mt-3">
+
+                <div class="detail-item">
+                  <span class="label">Composition</span>
+                  <span class="value">
+                    {{ ultrasoundData.composition || '—' }}
+                  </span>
+                </div>
+
+                <div class="detail-item">
+                  <span class="label">Echogenicity</span>
+                  <span class="value">
+                    {{ ultrasoundData.echogenicity || '—' }}
+                  </span>
+                </div>
+
+                <div class="detail-item">
+                  <span class="label">Margins</span>
+                  <span class="value">
+                    {{ ultrasoundData.margins || '—' }}
+                  </span>
+                </div>
+
+                <div class="detail-item">
+                  <span class="label">Calcifications</span>
+                  <span class="value">
+                    {{ ultrasoundData.calcifications || '—' }}
+                  </span>
+                </div>
+
+              </div>
+
+            </div>
+
+            <div class="col-lg-5">
+
+              <div
+                class="ai-highlight">
+
+                <h4>
+                  <i class="bi bi-eye me-2"></i>
+                  Imaging Summary
+                </h4>
+
+                <p>
+                  {{ ultrasoundData.summary ||
+                     ultrasoundData.ultrasound_evidence ||
+                     'Ultrasound evidence is available for clinician review.' }}
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+      <!-- AI ANALYSIS -->
+      <div
+        class="report-card mb-4"
+        ng-if="aiData">
+
+        <div class="report-card-header">
+          <div>
+            <h3>
+              <i class="bi bi-cpu me-2 text-primary"></i>
+              AI Analysis
+            </h3>
+
+            <p>
+              Model-generated evidence for clinical decision support.
+            </p>
+          </div>
+
+          <span
+            class="status-badge"
+            ng-class="aiData.requires_doctor_review || aiData.requiresDoctorReview
+                     ? 'status-warning'
+                     : 'status-success'">
+
+            {{
+              aiData.requires_doctor_review || aiData.requiresDoctorReview
+                ? 'Doctor Review Required'
+                : 'Review Status Available'
+            }}
+
+          </span>
+        </div>
+
+        <div class="report-card-body">
+
+          <div class="detail-grid mb-3">
+
+            <div class="detail-item">
+              <span class="label">Clinical Prediction</span>
+              <span class="value">
+                {{ aiData.clinical_top_prediction || aiData.top_prediction || '—' }}
+              </span>
+            </div>
+
+            <div class="detail-item">
+              <span class="label">Probability</span>
+              <span class="value">
+                {{ aiData.clinical_top_probability || aiData.top_probability || '—' }}
+              </span>
+            </div>
+
+            <div class="detail-item">
+              <span class="label">Fusion Method</span>
+              <span class="value">
+                {{ aiData.fusion_method || 'Late Evidence Integration' }}
+              </span>
+            </div>
+
+            <div class="detail-item">
+              <span class="label">Model Version</span>
+              <span class="value">
+                {{ aiData.model_version || '—' }}
+              </span>
+            </div>
+
+          </div>
+
+          <div class="ai-highlight">
+
+            <h4>
+              <i class="bi bi-layers me-2"></i>
+              Multimodal Summary
+            </h4>
+
+            <p>
+              {{ aiData.multimodal_summary ||
+                 aiData.summary ||
+                 'AI-generated multimodal evidence summary is available for review.' }}
+            </p>
+
+          </div>
+
+        </div>
+      </div>
+
+      <!-- RECOMMENDATION -->
+      <div
+        class="report-card mb-4"
+        ng-if="recommendation">
+
+        <div class="report-card-header">
+
+          <div>
+            <h3>
+              <i class="bi bi-shield-check me-2 text-success"></i>
+              AI-Supported Recommendation
+            </h3>
+
+            <p>
+              Recommendation output requiring qualified clinical review.
+            </p>
+          </div>
+
+          <span
+            class="status-badge"
+            ng-class="recommendation.doctor_status
+                     ? 'status-success'
+                     : 'status-warning'">
+
+            {{ recommendation.doctor_status || 'Pending Doctor Review' }}
+
+          </span>
+
+        </div>
+
+        <div class="report-card-body">
+
+          <div class="recommendation-box">
+
+            <h4>
+              Recommendation Summary
+            </h4>
+
+            <p>
+              {{ recommendation.recommendation_text ||
+                 recommendation.summary ||
+                 'No recommendation text available.' }}
+            </p>
+
+          </div>
+
+          <div
+            class="detail-grid mt-3">
+
+            <div class="detail-item">
+              <span class="label">Confidence</span>
+              <span class="value">
+                {{ recommendation.confidence || '—' }}
+              </span>
+            </div>
+
+            <div class="detail-item">
+              <span class="label">Doctor Status</span>
+              <span class="value">
+                {{ recommendation.doctor_status || 'Pending Review' }}
+              </span>
+            </div>
+
+            <div class="detail-item">
+              <span class="label">Reviewed By</span>
+              <span class="value">
+                {{ recommendation.reviewed_by || 'Not yet reviewed' }}
+              </span>
+            </div>
+
+            <div class="detail-item">
+              <span class="label">Reviewed At</span>
+              <span class="value">
+                {{ recommendation.reviewed_at || '—' }}
+              </span>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+      <!-- EMPTY REPORT PARTS -->
+      <div
+        class="report-card mb-4"
+        ng-if="!clinicalData && !ultrasoundData && !aiData && !recommendation">
+
+        <div class="empty-state">
+
+          <div>
+            <i class="bi bi-file-earmark-medical"></i>
+
+            <div class="fw-bold mb-1">
+              No detailed report data available
+            </div>
+
+            <div>
+              The selected patient does not yet have report information
+              available in the current workflow stage.
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- SAFETY -->
+      <div class="safety-notice">
+
+        <i class="bi bi-info-circle me-1"></i>
+
+        <strong>Clinical Decision Support Notice:</strong>
+
+        This report presents structured clinical evidence and AI-generated
+        decision-support information. It is not a final diagnosis or treatment
+        order. The treating/senior doctor remains the final authority for
+        patient-care decisions.
+
+      </div>
+
+    </div>
+
+    <!-- NO PATIENT -->
+    <div
+      class="report-card"
+      ng-if="!loading && !selectedPatientId">
+
+      <div class="empty-state">
+
+        <div>
+          <i class="bi bi-folder2-open"></i>
+
+          <div class="fw-bold mb-1">
+            Select a patient
+          </div>
+
+          <div>
+            Choose a patient above to open the clinical report workspace.
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>

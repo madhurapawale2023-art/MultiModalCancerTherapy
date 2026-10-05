@@ -1,0 +1,1954 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Login | MultiModalCancerTherapy
+    </title>
+
+    <!-- =====================================================
+         BOOTSTRAP
+    ====================================================== -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <!-- =====================================================
+         BOOTSTRAP ICONS
+    ====================================================== -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    >
+
+    <!-- =====================================================
+         LOGIN PAGE CSS
+    ====================================================== -->
+    <style>
+
+        /* =====================================================
+           ROOT
+        ====================================================== */
+
+        :root {
+            --primary: #0b5ed7;
+            --primary-dark: #084298;
+            --primary-light: #eaf3ff;
+
+            --success: #198754;
+            --danger: #dc3545;
+
+            --text: #1f2937;
+            --text-soft: #64748b;
+            --text-muted: #94a3b8;
+
+            --white: #ffffff;
+
+            --border: #e3e9f1;
+            --border-light: #edf2f7;
+
+            --surface: #f7fbff;
+
+            --shadow:
+                0 20px 55px rgba(15, 23, 42, 0.10);
+
+            --transition:
+                0.2s ease;
+        }
+
+
+        /* =====================================================
+           GLOBAL
+        ====================================================== */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            min-height: 100%;
+        }
+
+        body {
+            margin: 0;
+
+            font-family:
+                Inter,
+                "Segoe UI",
+                Roboto,
+                Helvetica,
+                Arial,
+                sans-serif;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #f6faff 0%,
+                    #eef5fc 100%
+                );
+
+            color:
+                var(--text);
+
+            -webkit-font-smoothing:
+                antialiased;
+        }
+
+        [ng-cloak] {
+            display: none !important;
+        }
+
+
+        /* =====================================================
+           LOGIN PAGE
+        ====================================================== */
+
+        .login-page {
+            min-height: 100vh;
+
+            padding: 24px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            background:
+                radial-gradient(
+                    circle at top right,
+                    rgba(13, 110, 253, 0.08),
+                    transparent 30%
+                ),
+                linear-gradient(
+                    135deg,
+                    #f8fbff,
+                    #edf4fb
+                );
+        }
+
+
+        /* =====================================================
+           MAIN CARD
+        ====================================================== */
+
+        .login-wrapper {
+            width: min(1180px, 100%);
+
+            min-height: 700px;
+
+            display: grid;
+
+            grid-template-columns:
+                1.05fr
+                0.95fr;
+
+            overflow: hidden;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 26px;
+
+            background:
+                var(--white);
+
+            box-shadow:
+                var(--shadow);
+        }
+
+
+        /* =====================================================
+           LEFT SHOWCASE
+        ====================================================== */
+
+        .login-showcase {
+            position: relative;
+
+            min-height: 700px;
+
+            padding: 48px;
+
+            overflow: hidden;
+
+            display: flex;
+
+            align-items: center;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #0a58ca 0%,
+                    #0d6efd 48%,
+                    #4a91f5 100%
+                );
+
+            color:
+                var(--white);
+        }
+
+
+        .login-showcase::before {
+            content: "";
+
+            position: absolute;
+
+            width: 420px;
+            height: 420px;
+
+            right: -160px;
+            top: -160px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(255, 255, 255, 0.08);
+        }
+
+
+        .login-showcase::after {
+            content: "";
+
+            position: absolute;
+
+            width: 300px;
+            height: 300px;
+
+            left: -130px;
+            bottom: -140px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(255, 255, 255, 0.06);
+        }
+
+
+        /* =====================================================
+           GRID BACKGROUND
+        ====================================================== */
+
+        .medical-grid {
+            position: absolute;
+
+            inset: 0;
+
+            opacity: 0.10;
+
+            background-image:
+                linear-gradient(
+                    rgba(255,255,255,0.45) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    90deg,
+                    rgba(255,255,255,0.45) 1px,
+                    transparent 1px
+                );
+
+            background-size:
+                42px 42px;
+
+            mask-image:
+                linear-gradient(
+                    90deg,
+                    #000,
+                    transparent
+                );
+        }
+
+
+        .showcase-content {
+            position: relative;
+
+            z-index: 2;
+
+            width: 100%;
+        }
+
+
+        /* =====================================================
+           BRAND
+        ====================================================== */
+
+        .showcase-brand {
+            display: flex;
+
+            align-items: center;
+
+            gap: 13px;
+
+            margin-bottom: 58px;
+        }
+
+
+        .showcase-logo {
+            width: 52px;
+            height: 52px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border:
+                1px solid
+                rgba(255,255,255,0.20);
+
+            border-radius: 15px;
+
+            background:
+                rgba(255,255,255,0.12);
+
+            backdrop-filter:
+                blur(10px);
+
+            font-size: 23px;
+        }
+
+
+        .showcase-brand-name {
+            font-size: 17px;
+
+            font-weight: 750;
+
+            letter-spacing: -0.2px;
+        }
+
+
+        .showcase-brand-subtitle {
+            margin-top: 2px;
+
+            color:
+                rgba(255,255,255,0.68);
+
+            font-size: 10px;
+
+            font-weight: 650;
+
+            letter-spacing: 0.6px;
+
+            text-transform:
+                uppercase;
+        }
+
+
+        /* =====================================================
+           EYEBROW
+        ====================================================== */
+
+        .showcase-eyebrow {
+            display: inline-flex;
+
+            align-items: center;
+
+            margin-bottom: 18px;
+
+            padding:
+                7px 10px;
+
+            border:
+                1px solid
+                rgba(255,255,255,0.16);
+
+            border-radius: 8px;
+
+            background:
+                rgba(255,255,255,0.08);
+
+            color:
+                rgba(255,255,255,0.90);
+
+            font-size: 10px;
+
+            font-weight: 700;
+
+            letter-spacing:
+                0.5px;
+
+            text-transform:
+                uppercase;
+        }
+
+
+        /* =====================================================
+           HEADING
+        ====================================================== */
+
+        .showcase-title {
+            margin: 0;
+
+            color:
+                #ffffff;
+
+            font-size:
+                clamp(31px, 4vw, 47px);
+
+            font-weight:
+                780;
+
+            line-height:
+                1.08;
+
+            letter-spacing:
+                -1.5px;
+        }
+
+
+        .showcase-title span {
+            color:
+                #dcebff;
+        }
+
+
+        .showcase-description {
+            max-width: 540px;
+
+            margin:
+                20px 0 0;
+
+            color:
+                rgba(255,255,255,0.76);
+
+            font-size: 13px;
+
+            line-height: 1.75;
+        }
+
+
+        /* =====================================================
+           FEATURES
+        ====================================================== */
+
+        .feature-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 10px;
+
+            margin-top: 34px;
+        }
+
+
+        .feature-card {
+            padding: 14px;
+
+            border:
+                1px solid
+                rgba(255,255,255,0.13);
+
+            border-radius: 13px;
+
+            background:
+                rgba(255,255,255,0.075);
+
+            backdrop-filter:
+                blur(8px);
+
+            transition:
+                transform var(--transition),
+                background var(--transition);
+        }
+
+
+        .feature-card:hover {
+            transform:
+                translateY(-2px);
+
+            background:
+                rgba(255,255,255,0.11);
+        }
+
+
+        .feature-icon {
+            width: 34px;
+            height: 34px;
+
+            margin-bottom: 11px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 9px;
+
+            background:
+                rgba(255,255,255,0.12);
+
+            font-size: 14px;
+        }
+
+
+        .feature-title {
+            display: block;
+
+            color:
+                #ffffff;
+
+            font-size: 10px;
+
+            font-weight: 750;
+
+            line-height: 1.35;
+        }
+
+
+        .feature-text {
+            display: block;
+
+            margin-top: 5px;
+
+            color:
+                rgba(255,255,255,0.64);
+
+            font-size: 8.5px;
+
+            line-height: 1.45;
+        }
+
+
+        /* =====================================================
+           SAFETY
+        ====================================================== */
+
+        .showcase-safety {
+            display: flex;
+
+            align-items: flex-start;
+
+            gap: 9px;
+
+            margin-top: 26px;
+
+            padding:
+                11px 13px;
+
+            border:
+                1px solid
+                rgba(255,255,255,0.13);
+
+            border-radius: 10px;
+
+            background:
+                rgba(255,255,255,0.055);
+
+            color:
+                rgba(255,255,255,0.68);
+
+            font-size: 9px;
+
+            line-height: 1.55;
+        }
+
+
+        .showcase-safety i {
+            flex-shrink: 0;
+
+            color:
+                #dcecff;
+
+            margin-top: 1px;
+        }
+
+
+        /* =====================================================
+           RIGHT LOGIN PANEL
+        ====================================================== */
+
+        .login-panel {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding:
+                42px 46px;
+
+            background:
+                #ffffff;
+        }
+
+
+        .login-card {
+            width: 100%;
+
+            max-width: 425px;
+        }
+
+
+        /* =====================================================
+           LOGIN BRAND
+        ====================================================== */
+
+        .login-brand {
+            text-align: center;
+
+            margin-bottom: 20px;
+        }
+
+
+        .login-brand-icon {
+            width: 62px;
+            height: 62px;
+
+            margin:
+                0 auto 14px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 17px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--primary),
+                    #4a91f5
+                );
+
+            color:
+                #ffffff;
+
+            font-size: 26px;
+
+            box-shadow:
+                0 10px 25px
+                rgba(11,94,215,0.18);
+        }
+
+
+        .login-brand h1 {
+            margin: 0;
+
+            color:
+                var(--text);
+
+            font-size: 23px;
+
+            font-weight: 760;
+
+            letter-spacing:
+                -0.5px;
+        }
+
+
+        .login-brand p {
+            margin:
+                5px 0 0;
+
+            color:
+                var(--text-soft);
+
+            font-size: 11px;
+        }
+
+
+        /* =====================================================
+           SECURITY BAR
+        ====================================================== */
+
+        .security-bar {
+            display: flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+            margin-bottom: 20px;
+
+            padding:
+                9px 11px;
+
+            border:
+                1px solid
+                #dceee6;
+
+            border-radius: 8px;
+
+            background:
+                #f5fcf8;
+
+            color:
+                #4c6c5d;
+
+            font-size: 9px;
+
+            font-weight: 650;
+        }
+
+
+        .security-dot {
+            width: 7px;
+            height: 7px;
+
+            flex-shrink: 0;
+
+            border-radius: 50%;
+
+            background:
+                var(--success);
+
+            box-shadow:
+                0 0 0 4px
+                rgba(25,135,84,0.08);
+        }
+
+
+        .security-lock {
+            margin-left: auto;
+
+            color:
+                var(--success);
+        }
+
+
+        /* =====================================================
+           ALERT
+        ====================================================== */
+
+        .alert {
+            margin-bottom: 15px;
+
+            padding:
+                10px 12px;
+
+            border-radius: 8px;
+
+            font-size: 10px;
+        }
+
+
+        .alert i {
+            margin-right: 6px;
+        }
+
+
+        /* =====================================================
+           LABEL
+        ====================================================== */
+
+        .form-label {
+            margin-bottom: 6px;
+
+            color:
+                #334155;
+
+            font-size: 11px;
+
+            font-weight: 700;
+        }
+
+
+        /* =====================================================
+           INPUT
+        ====================================================== */
+
+        .input-wrapper {
+            position: relative;
+        }
+
+
+        .input-wrapper > .input-icon {
+            position: absolute;
+
+            left: 13px;
+
+            top: 50%;
+
+            transform:
+                translateY(-50%);
+
+            color:
+                #94a3b8;
+
+            font-size: 13px;
+
+            pointer-events:
+                none;
+
+            z-index: 2;
+        }
+
+
+        .input-wrapper .form-control {
+            min-height: 44px;
+
+            padding-left:
+                38px;
+
+            padding-right:
+                40px;
+
+            border:
+                1px solid #dbe3ed;
+
+            border-radius:
+                9px;
+
+            font-size: 12px;
+
+            box-shadow: none;
+
+            transition:
+                border-color var(--transition),
+                box-shadow var(--transition);
+        }
+
+
+        .input-wrapper .form-control:focus {
+            border-color:
+                #86b7fe;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(13,110,253,0.09);
+        }
+
+
+        /* =====================================================
+           PASSWORD TOGGLE
+        ====================================================== */
+
+        .password-toggle {
+            position: absolute;
+
+            right: 6px;
+
+            top: 50%;
+
+            width: 32px;
+            height: 32px;
+
+            transform:
+                translateY(-50%);
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border: 0;
+
+            border-radius: 7px;
+
+            background:
+                transparent;
+
+            color:
+                #94a3b8;
+
+            cursor: pointer;
+
+            transition:
+                background var(--transition),
+                color var(--transition);
+        }
+
+
+        .password-toggle:hover {
+            background:
+                #f1f5f9;
+
+            color:
+                var(--primary);
+        }
+
+
+        /* =====================================================
+           FIELD ERROR
+        ====================================================== */
+
+        .field-error {
+            margin-top: 5px;
+
+            color:
+                var(--danger);
+
+            font-size: 9px;
+        }
+
+
+        /* =====================================================
+           LOGIN BUTTON
+        ====================================================== */
+
+        .login-button {
+            width: 100%;
+
+            min-height: 46px;
+
+            margin-top: 4px;
+
+            border: 0;
+
+            border-radius: 9px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--primary),
+                    #2379ea
+                );
+
+            color:
+                #ffffff;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            box-shadow:
+                0 8px 18px
+                rgba(11,94,215,0.17);
+
+            transition:
+                transform var(--transition),
+                box-shadow var(--transition);
+        }
+
+
+        .login-button:hover:not(:disabled) {
+            transform:
+                translateY(-1px);
+
+            box-shadow:
+                0 11px 24px
+                rgba(11,94,215,0.22);
+        }
+
+
+        .login-button:disabled {
+            cursor:
+                not-allowed;
+
+            opacity:
+                0.72;
+        }
+
+
+        /* =====================================================
+           DEMO ACCESS
+        ====================================================== */
+
+        .demo-section {
+            margin-top: 22px;
+
+            padding-top: 18px;
+
+            border-top:
+                1px solid
+                var(--border-light);
+        }
+
+
+        .demo-header {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            margin-bottom: 10px;
+
+            color:
+                var(--text-soft);
+
+            font-size: 9px;
+
+            font-weight: 700;
+        }
+
+
+        .demo-badge {
+            padding:
+                4px 7px;
+
+            border-radius: 6px;
+
+            background:
+                #f1f5f9;
+
+            color:
+                var(--text-muted);
+
+            font-size: 8px;
+
+            text-transform:
+                uppercase;
+
+            letter-spacing:
+                0.3px;
+        }
+
+
+        .demo-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 8px;
+        }
+
+
+        .demo-button {
+            min-height: 54px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 9px;
+
+            padding:
+                8px 10px;
+
+            border:
+                1px solid
+                var(--border);
+
+            border-radius: 9px;
+
+            background:
+                #fbfdff;
+
+            text-align: left;
+
+            cursor: pointer;
+
+            transition:
+                border-color var(--transition),
+                background var(--transition),
+                transform var(--transition);
+        }
+
+
+        .demo-button:hover {
+            transform:
+                translateY(-1px);
+
+            border-color:
+                #b9d2f3;
+
+            background:
+                #f5f9ff;
+        }
+
+
+        .demo-icon {
+            width: 31px;
+            height: 31px;
+
+            flex-shrink: 0;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 8px;
+
+            font-size: 13px;
+        }
+
+
+        .demo-icon.admin {
+            background:
+                #eef5ff;
+
+            color:
+                var(--primary);
+        }
+
+
+        .demo-icon.doctor {
+            background:
+                #edf9f3;
+
+            color:
+                var(--success);
+        }
+
+
+        .demo-text {
+            display: flex;
+
+            flex-direction: column;
+        }
+
+
+        .demo-text strong {
+            color:
+                var(--text);
+
+            font-size: 9px;
+
+            font-weight: 750;
+        }
+
+
+        .demo-text small {
+            margin-top: 2px;
+
+            color:
+                var(--text-muted);
+
+            font-size: 8px;
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ====================================================== */
+
+        .login-footer {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            flex-wrap: wrap;
+
+            gap: 7px;
+
+            margin-top: 20px;
+
+            padding-top: 16px;
+
+            border-top:
+                1px solid
+                var(--border-light);
+
+            color:
+                var(--text-muted);
+
+            font-size: 8px;
+
+            font-weight: 600;
+        }
+
+
+        .login-footer-item {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 4px;
+        }
+
+
+        .login-footer-item i {
+            color:
+                var(--primary);
+        }
+
+
+        .login-footer-dot {
+            color:
+                #cbd5e1;
+        }
+
+
+        /* =====================================================
+           MOBILE DISCLAIMER
+        ====================================================== */
+
+        .mobile-disclaimer {
+            margin-top: 10px;
+
+            padding:
+                10px 12px;
+
+            border:
+                1px solid
+                #dce8f5;
+
+            border-radius:
+                9px;
+
+            background:
+                #f7fbff;
+
+            color:
+                var(--text-soft);
+
+            font-size:
+                9px;
+
+            line-height:
+                1.5;
+        }
+
+
+        .mobile-disclaimer i {
+            margin-right: 4px;
+
+            color:
+                var(--primary);
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ====================================================== */
+
+        @media (max-width: 1050px) {
+
+            .login-wrapper {
+                grid-template-columns:
+                    1fr 1fr;
+            }
+
+            .login-showcase {
+                padding:
+                    38px;
+            }
+
+            .login-panel {
+                padding:
+                    32px;
+            }
+
+            .feature-grid {
+                grid-template-columns:
+                    1fr;
+            }
+
+            .feature-card {
+                padding:
+                    12px;
+            }
+        }
+
+
+        @media (max-width: 900px) {
+
+            .login-wrapper {
+                display:
+                    block;
+
+                max-width:
+                    520px;
+
+                min-height:
+                    auto;
+            }
+
+            .login-showcase {
+                display:
+                    none;
+            }
+
+            .login-panel {
+                padding:
+                    32px 26px;
+            }
+        }
+
+
+        @media (max-width: 575px) {
+
+            .login-page {
+                padding:
+                    12px;
+            }
+
+            .login-wrapper {
+                border-radius:
+                    18px;
+            }
+
+            .login-panel {
+                padding:
+                    24px 16px;
+            }
+
+            .login-brand h1 {
+                font-size:
+                    21px;
+            }
+
+            .demo-grid {
+                grid-template-columns:
+                    1fr;
+            }
+
+            .login-footer {
+                gap:
+                    5px;
+            }
+        }
+
+
+        /* =====================================================
+           REDUCED MOTION
+        ====================================================== */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                transition-duration:
+                    0.01ms !important;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body
+    ng-app="MultiModalCancerTherapy"
+    ng-controller="LoginController"
+    ng-cloak
+>
+
+
+    <!-- =====================================================
+         LOGIN
+    ====================================================== -->
+
+    <main class="login-page">
+
+        <div class="login-wrapper">
+
+
+            <!-- =================================================
+                 LEFT SHOWCASE
+            ================================================== -->
+
+            <section class="login-showcase">
+
+                <div class="medical-grid"></div>
+
+                <div class="showcase-content">
+
+
+                    <!-- Brand -->
+
+                    <div class="showcase-brand">
+
+                        <div class="showcase-logo">
+                            <i class="bi bi-heart-pulse-fill"></i>
+                        </div>
+
+                        <div>
+
+                            <div class="showcase-brand-name">
+                                MultiModalCancerTherapy
+                            </div>
+
+                            <div class="showcase-brand-subtitle">
+                                AI Clinical Decision Support
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Heading -->
+
+                    <div class="showcase-eyebrow">
+
+                        <i class="bi bi-shield-check me-1"></i>
+
+                        Clinical Intelligence Platform
+
+                    </div>
+
+
+                    <h1 class="showcase-title">
+
+                        Multimodal evidence.
+                        <br>
+
+                        <span>
+                            One clinical workspace.
+                        </span>
+
+                    </h1>
+
+
+                    <p class="showcase-description">
+
+                        Bring clinical information, pathology,
+                        laboratory findings, ultrasound evidence
+                        and AI-assisted analysis together in one
+                        structured clinical workflow.
+
+                    </p>
+
+
+                    <!-- Features -->
+
+                    <div class="feature-grid">
+
+
+                        <div class="feature-card">
+
+                            <div class="feature-icon">
+
+                                <i class="bi bi-cpu-fill"></i>
+
+                            </div>
+
+                            <span class="feature-title">
+                                AI-Assisted Analysis
+                            </span>
+
+                            <span class="feature-text">
+                                Model-assisted clinical evidence
+                                interpretation.
+                            </span>
+
+                        </div>
+
+
+                        <div class="feature-card">
+
+                            <div class="feature-icon">
+
+                                <i class="bi bi-images"></i>
+
+                            </div>
+
+                            <span class="feature-title">
+                                Ultrasound Intelligence
+                            </span>
+
+                            <span class="feature-text">
+                                Upload and analyze ultrasound
+                                imaging evidence.
+                            </span>
+
+                        </div>
+
+
+                        <div class="feature-card">
+
+                            <div class="feature-icon">
+
+                                <i class="bi bi-diagram-3-fill"></i>
+
+                            </div>
+
+                            <span class="feature-title">
+                                Clinical Workflow
+                            </span>
+
+                            <span class="feature-text">
+                                Structured multidisciplinary
+                                review process.
+                            </span>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <!-- Safety -->
+
+                    <div class="showcase-safety">
+
+                        <i class="bi bi-info-circle-fill"></i>
+
+                        <span>
+                            AI output is provided for clinical
+                            decision support only. Final treatment
+                            decisions remain with the treating
+                            Senior Doctor.
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 LOGIN PANEL
+            ================================================== -->
+
+            <section class="login-panel">
+
+                <div class="login-card">
+
+
+                    <!-- Login brand -->
+
+                    <div class="login-brand">
+
+                        <div class="login-brand-icon">
+
+                            <i class="bi bi-heart-pulse-fill"></i>
+
+                        </div>
+
+                        <h1>
+                            Welcome back
+                        </h1>
+
+                        <p>
+                            Sign in to your clinical workspace
+                        </p>
+
+                    </div>
+
+
+                    <!-- Security -->
+
+                    <div class="security-bar">
+
+                        <span class="security-dot"></span>
+
+                        <span>
+                            Secure clinical access
+                        </span>
+
+                        <span class="security-lock">
+                            <i class="bi bi-lock-fill"></i>
+                        </span>
+
+                    </div>
+
+
+                    <!-- Error -->
+
+                    <div
+                        class="alert alert-danger d-flex align-items-start"
+                        ng-if="errorMessage"
+                    >
+
+                        <i class="bi bi-exclamation-triangle-fill"></i>
+
+                        <span>
+                            {{ errorMessage }}
+                        </span>
+
+                    </div>
+
+
+                    <!-- Success -->
+
+                    <div
+                        class="alert alert-success d-flex align-items-start"
+                        ng-if="successMessage"
+                    >
+
+                        <i class="bi bi-check-circle-fill"></i>
+
+                        <span>
+                            {{ successMessage }}
+                        </span>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         FORM
+                    ================================================== -->
+
+                    <form
+                        name="loginForm"
+                        novalidate
+                        ng-submit="login(loginForm)"
+                    >
+
+
+                        <!-- Username -->
+
+                        <div class="mb-3">
+
+                            <label
+                                for="username"
+                                class="form-label"
+                            >
+                                Username
+                            </label>
+
+                            <div class="input-wrapper">
+
+                                <i
+                                    class="bi bi-person-fill input-icon"
+                                ></i>
+
+                                <input
+                                    id="username"
+                                    name="username"
+                                    type="text"
+                                    class="form-control"
+                                    placeholder="Enter your username"
+                                    autocomplete="username"
+                                    ng-model="loginData.username"
+                                    ng-change="clearMessages()"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div
+                                class="field-error"
+                                ng-if="
+                                    loginSubmitted &&
+                                    loginForm.username.$error.required
+                                "
+                            >
+                                Username is required.
+                            </div>
+
+                        </div>
+
+
+                        <!-- Password -->
+
+                        <div class="mb-3">
+
+                            <div
+                                class="d-flex
+                                       justify-content-between
+                                       align-items-center"
+                            >
+
+                                <label
+                                    for="password"
+                                    class="form-label mb-2"
+                                >
+                                    Password
+                                </label>
+
+                                <span
+                                    style="
+                                        color:#94a3b8;
+                                        font-size:8px;
+                                    "
+                                >
+                                    Protected access
+                                </span>
+
+                            </div>
+
+
+                            <div class="input-wrapper">
+
+                                <i
+                                    class="bi bi-lock-fill input-icon"
+                                ></i>
+
+
+                                <input
+                                    id="password"
+                                    name="password"
+                                    class="form-control"
+                                    ng-attr-type="
+                                        {{ showPassword ? 'text' : 'password' }}
+                                    "
+                                    placeholder="Enter your password"
+                                    autocomplete="current-password"
+                                    ng-model="loginData.password"
+                                    ng-change="clearMessages()"
+                                    required
+                                >
+
+
+                                <button
+                                    type="button"
+                                    class="password-toggle"
+                                    ng-click="togglePassword()"
+                                    aria-label="Toggle password visibility"
+                                >
+
+                                    <i
+                                        class="bi"
+                                        ng-class="
+                                            showPassword
+                                            ? 'bi-eye-slash-fill'
+                                            : 'bi-eye-fill'
+                                        "
+                                    ></i>
+
+                                </button>
+
+                            </div>
+
+
+                            <div
+                                class="field-error"
+                                ng-if="
+                                    loginSubmitted &&
+                                    loginForm.password.$error.required
+                                "
+                            >
+                                Password is required.
+                            </div>
+
+                        </div>
+
+
+                        <!-- Secure session -->
+
+                        <div
+                            class="d-flex
+                                   justify-content-between
+                                   align-items-center
+                                   mb-3"
+                        >
+
+                            <div class="form-check">
+
+                                <input
+                                    id="secureSession"
+                                    type="checkbox"
+                                    class="form-check-input"
+                                >
+
+                                <label
+                                    for="secureSession"
+                                    class="form-check-label"
+                                    style="
+                                        color:#64748b;
+                                        font-size:9px;
+                                    "
+                                >
+                                    Secure session
+                                </label>
+
+                            </div>
+
+                            <span
+                                style="
+                                    color:#94a3b8;
+                                    font-size:8px;
+                                "
+                            >
+                                v1.0.0
+                            </span>
+
+                        </div>
+
+
+                        <!-- Login -->
+
+                        <button
+                            type="submit"
+                            class="login-button"
+                            ng-disabled="isLoading"
+                        >
+
+                            <span
+                                ng-if="!isLoading"
+                            >
+
+                                <i
+                                    class="bi bi-box-arrow-in-right me-2">
+                                </i>
+
+                                Sign in securely
+
+                            </span>
+
+
+                            <span
+                                ng-if="isLoading"
+                                class="d-inline-flex
+                                       align-items-center
+                                       justify-content-center
+                                       gap-2"
+                            >
+
+                                <span
+                                    class="spinner-border
+                                           spinner-border-sm"
+                                ></span>
+
+                                Authenticating...
+
+                            </span>
+
+                        </button>
+
+                    </form>
+
+
+                    <!-- =================================================
+                         DEMO ACCESS
+                    ================================================== -->
+
+                    <div class="demo-section">
+
+                        <div class="demo-header">
+
+                            <span>
+                                <i
+                                    class="bi bi-flask-fill me-1">
+                                </i>
+
+                                Demo access
+                            </span>
+
+                            <span class="demo-badge">
+                                Test environment
+                            </span>
+
+                        </div>
+
+
+                        <div class="demo-grid">
+
+
+                            <!-- Admin -->
+
+                            <button
+                                type="button"
+                                class="demo-button"
+                                ng-click="useDemoAdmin()"
+                            >
+
+                                <span
+                                    class="demo-icon admin"
+                                >
+
+                                    <i
+                                        class="bi bi-shield-fill-check">
+                                    </i>
+
+                                </span>
+
+                                <span class="demo-text">
+
+                                    <strong>
+                                        Admin
+                                    </strong>
+
+                                    <small>
+                                        System access
+                                    </small>
+
+                                </span>
+
+                            </button>
+
+
+                            <!-- Senior Doctor -->
+
+                            <button
+                                type="button"
+                                class="demo-button"
+                                ng-click="useDemoDoctor()"
+                            >
+
+                                <span
+                                    class="demo-icon doctor"
+                                >
+
+                                    <i
+                                        class="bi bi-person-badge-fill">
+                                    </i>
+
+                                </span>
+
+                                <span class="demo-text">
+
+                                    <strong>
+                                        Senior Doctor
+                                    </strong>
+
+                                    <small>
+                                        Clinical access
+                                    </small>
+
+                                </span>
+
+                            </button>
+
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         FOOTER
+                    ================================================== -->
+
+                    <div class="login-footer">
+
+                        <span class="login-footer-item">
+
+                            <i class="bi bi-database-check"></i>
+
+                            PostgreSQL
+
+                        </span>
+
+                        <span class="login-footer-dot">
+                            •
+                        </span>
+
+                        <span class="login-footer-item">
+
+                            <i class="bi bi-shield-lock"></i>
+
+                            Protected
+
+                        </span>
+
+                        <span class="login-footer-dot">
+                            •
+                        </span>
+
+                        <span class="login-footer-item">
+
+                            <i class="bi bi-cpu"></i>
+
+                            AI Support
+
+                        </span>
+
+                    </div>
+
+
+                    <!-- Mobile disclaimer -->
+
+                    <div class="mobile-disclaimer">
+
+                        <i class="bi bi-info-circle-fill"></i>
+
+                        AI outputs are for clinical decision
+                        support only. Final treatment decisions
+                        remain with the treating Senior Doctor.
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+</body>
+
+</html>

@@ -1,0 +1,6 @@
+{
+  "name": "multimodal-cancer-therapy-frontend",
+  "version": "1.0.0",
+  "description": "AngularJS 1.8.x frontend for clinical decision support",
+  "private": true
+}
